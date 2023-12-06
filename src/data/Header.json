@@ -1,0 +1,28 @@
+{
+    "pages": [
+        {
+            "name": "HOME",
+            "link": "/"
+        },
+        {
+            "name": "ABOUT",
+            "link": "/about"
+        },
+        {
+            "name": "MENU",
+            "link": "/menu"
+        },
+        {
+            "name": "RESERVATION",
+            "link": "/reservastion"
+        },
+        {
+            "name": "BLOG",
+            "link": "/blog"
+        },
+        {
+            "name": "CONTACT",
+            "link": "/contact"
+        }
+    ]
+}

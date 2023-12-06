@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Miniver&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+@import '../../index.scss';
+
+.circle-image {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+
+    animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.bg-image {
+    background-image: url('../../images/Team.png');
+    min-height: 45vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img3 {
+    max-height: 65vh !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img {
+    min-height: 25vh;
+    max-width: 40vh !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.miniver {
+    font-family: 'Miniver';
+    color: $color_1;
+}
+
+.inter {
+    font-family: 'Inter';
+}
+
+.kalam {
+    font-family: 'Kalam';
+}
+
+.about {
+    font-family: 'Kalam';
+    color: $color_1;
+}
+
+
+
+@media (max-width: 500px) {
+    .img {
+        position: relative;
+        left: 50% !important;
+        transform: translateX(-50%);
+        max-width: 40vh !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .img {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 40vh !important;
+    }
+
+    .paghar {
+
+
+        p {
+            font-size: 17px !important;
+        }
+
+    }
+}
+
+
+@media (min-width: 801px) and (max-width: 1023px) {
+    .img {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 40vh !important;
+
+
+    }
+
+    .paghar {
+        position: relative;
+        left: 44%;
+        transform: translateX(-50%);
+
+        p {
+            font-size: 17px !important;
+        }
+
+    }
+}
+
+
+@media (min-width:1024px) and (max-width: 1330px) {
+    .img {
+        position: relative;
+        left: 40%;
+        transform: translateX(-50%);
+        max-width: 33vh !important;
+        top: -6% !important;
+
+    }
+
+    .img3 {
+        max-width: 33vh !important;
+        position: relative;
+        left: -10%;
+
+    }
+
+    .paghar {
+        position: relative;
+        left: 35%;
+        transform: translateX(-50%);
+        top: -7% !important;
+
+        p {
+            font-size: 14.3px !important;
+        }
+    }
+}
