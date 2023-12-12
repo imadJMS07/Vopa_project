@@ -1,0 +1,40 @@
+@import '../../index.scss';
+
+.kalamButton {
+    font-family: $Kalam !important;
+    background-color: $color_1 !important;
+    color: white;
+}
+
+.kalamButtonC {
+    font-family: $Kalam !important;
+    color: $color_1;
+}
+
+.container {
+    @media only screen and (min-width: 768px) and (max-width: 1224px) {
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .w-full-md {
+            width: 100%;
+        }
+
+        .w-96-md {
+            width: 96%;
+        }
+
+        .h-md-150 {
+            height: 150px;
+        }
+
+        .h-md-300 {
+            height: 300px;
+        }
+    }
+}

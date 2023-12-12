@@ -1,0 +1,27 @@
+{
+    "qestions": "Have any qestion?",
+    "input_name": {
+        "label": "Your Name *",
+        "placeHolder": "Name here"
+    },
+    "input_email": {
+        "label": "Your Email *",
+        "placeHolder": "Email here"
+    },
+    "input_subject": {
+        "label": "Subject *",
+        "placeHolder": "Subject here"
+    },
+    "message": {
+        "label": "Message *",
+        "placeHolder": "Entre Your Message here"
+    },
+    "button": {
+        "label": "Send message"
+    },
+    "card": {
+        "phone": "Phone Number",
+        "email": "Email Address",
+        "local": "Our Location"
+    }
+}

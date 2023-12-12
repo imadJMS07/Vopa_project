@@ -7,7 +7,16 @@
             "grand2": " Experiences with Passion ",
             "grand3": "And Quali",
             "let2": "ty",
-            "pharagraph": "Our team is made up of professionals passionate about healthy gastronomy. Each member of our team brings their expertise and creativity to offer our customers a unique culinary experience. From talented chefs to attentive servers, we work together to ensure exceptional service and flavorful dishes, prepared with fresh, quality ingredients. Our Partners We work with carefully selected local partners who share our commitment to quality and sustainability. These partnerships allow us to guarantee fresh produce and support the local economy, while maintaining high standards for our dishes."
+            "pharagraph1": "Our team is made up of professionals passionate about healthy",
+            "pharagraph2": "gastronomy. Each member of our team brings their expertise",
+            "pharagraph3": "and creativity to offer our customers a unique culinary ",
+            "pharagraph4": "experience. From talented chefs to attentive servers, we work",
+            "pharagraph5": "together to ensure exceptional service and flavorful dishes",
+            "pharagraph6": "prepared with fresh, quality ingredients. Our Partners We work",
+            "pharagraph7": "with carefully selected local partners who share our",
+            "pharagraph8": "commitment to quality and sustainability. These partnerships",
+            "pharagraph9": "allow us to guarantee fresh produce and support the local",
+            "pharagraph10": "economy, while maintaining high standards for our dishes."
         }
     ],
     "clients": [
@@ -18,19 +27,31 @@
             "grand2": "  with Tailored,",
             "grand3": "Healthy Meal Solutio",
             "let2": "ns",
-            "pharagraph": "We are proud to count among our B2B clients companies that care about the health and well-being of their employees. We work closely with these companies to provide healthy, balanced and delicious meals, tailored to the specific needs of their team."
+            "pharagraph1": "We are proud to count among our B2B clients companies that", 
+            "pharagraph2":"care about the health and well-being of their employees. We",
+            "pharagraph3":"work closely with these companies to provide healthy, balanced", 
+            "pharagraph4":"and delicious meals, tailored to the specific needs of their ",
+            "pharagraph5":"team."
         }
     ],
     "values": [
         {
             "title": "Our values",
-            "pharagraph": "At VOPA, we value freshness, sustainability and creativity. We believe in the importance of respecting the environment while providing healthy and delicious dishes to our customers. Integrity, quality ingredients and exceptional service are at the heart of our values."
+            "pharagraph1": "At VOPA, we value freshness, sustainability" ,
+           "pharagraph2": "and creativity. We believe in the importance of respecting",
+            "pharagraph3": "  the environment while providing healthy and delicious",
+            "pharagraph4": "  dishes to our customers. Integrity, quality ingredients and",
+            "pharagraph5":"exceptional service are at the heart of our values."
         }
     ],
     "vision": [
         {
             "title": "Our vision",
-            "pharagraph": "Our vision is to become the go-to place for healthy food lovers in Tangier. We aspire to inspire people to adopt a healthy lifestyle by offering them delicious, balanced and diverse dishes. We aim to expand our impact by promoting healthy eating habits within our community."
+            "pharagraph1": "Our vision is to become the go-to place for healthy food  ",
+            "pharagraph2": "lovers in Tangier. We aspire to inspire people to adopt a  ",
+            "pharagraph3": "healthy lifestyle by offering them delicious, balanced and ",
+            "pharagraph4": "diverse dishes. We aim to expand our impact by promoting ",
+            "pharagraph5": "healthy eating habits within ourcommunity."
         }
     ]
 }

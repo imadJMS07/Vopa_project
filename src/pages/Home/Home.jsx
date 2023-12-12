@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <>
 
-            <div className="container">
+            {/* <div className="container">
                 <div class="grid grid-cols-2  " >
                     <div className=' w-full mt-96 col1 '>
                         <p>Healthy & Testy Food</p>
@@ -26,6 +26,10 @@ const Home = () => {
                         <img src={pic_6} alt="" className='sm:w-[1230px]' />
                     </div>
                 </div>
+            </div> */}
+
+            <div>
+                Home
             </div>
         </>
     );

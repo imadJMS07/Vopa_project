@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Miniver&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
 @import '../../index.scss';
 
 .circle-image {
@@ -30,7 +27,8 @@
     background-repeat: no-repeat;
 }
 
-.img3 {
+.img3,
+.img3partetwo {
     max-height: 65vh !important;
     background-size: cover;
     background-position: center;
@@ -38,7 +36,7 @@
 }
 
 .img {
-    min-height: 25vh;
+    min-height: 40vh !important;
     max-width: 40vh !important;
     background-size: cover;
     background-position: center;
@@ -46,16 +44,16 @@
 }
 
 .miniver {
-    font-family: 'Miniver';
+    font-family: $Miniver;
     color: $color_1;
 }
 
 .inter {
-    font-family: 'Inter';
+    font-family: $Inter;
 }
 
 .kalam {
-    font-family: 'Kalam';
+    font-family: $Kalam;
 }
 
 .about {
@@ -63,40 +61,67 @@
     color: $color_1;
 }
 
-
+// Parte 1
 
 @media (max-width: 500px) {
-    .img {
-        position: relative;
-        left: 50% !important;
-        transform: translateX(-50%);
-        max-width: 40vh !important;
-    }
-}
 
-@media (max-width: 800px) {
     .img {
-        position: relative;
-        left: 50%;
+
         transform: translateX(-50%);
         max-width: 40vh !important;
     }
 
     .paghar {
+        p {
+            font-size: 18.3px !important;
+        }
+    }
+
+    .twoimage {
+        display: flex;
+        justify-content: center !important;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+
+
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+
+    .twoimage {
+        display: flex;
+        justify-content: center !important;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .paghar {
+        margin-left: auto;
+        margin-right: auto;
 
 
         p {
-            font-size: 17px !important;
+            font-size: 19px !important;
+
         }
 
     }
+
+
+
 }
 
 
 @media (min-width: 801px) and (max-width: 1023px) {
     .img {
         position: relative;
-        left: 50%;
+        // left: 50%;
+        margin-left: auto;
+        margin-right: auto;
         transform: translateX(-50%);
         max-width: 40vh !important;
 
@@ -109,17 +134,20 @@
         transform: translateX(-50%);
 
         p {
-            font-size: 17px !important;
+            font-size: 14px !important;
         }
 
     }
 }
 
 
-@media (min-width:1024px) and (max-width: 1330px) {
+
+@media (min-width:1024px) and (max-width: 1150px) {
     .img {
         position: relative;
-        left: 40%;
+        // left: 40%;
+        margin-left: auto;
+        margin-right: auto;
         transform: translateX(-50%);
         max-width: 33vh !important;
         top: -6% !important;
@@ -129,18 +157,234 @@
     .img3 {
         max-width: 33vh !important;
         position: relative;
-        left: -10%;
+        // left: -10%;
 
     }
 
     .paghar {
         position: relative;
-        left: 35%;
+        left: 38%;
+
         transform: translateX(-50%);
         top: -7% !important;
 
         p {
             font-size: 14.3px !important;
+        }
+    }
+}
+
+
+
+@media (min-width:1151px) and (max-width: 1497px) {
+    .img {
+        position: relative;
+
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(-50%);
+        top: -6% !important;
+
+    }
+
+    .img3 {
+
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .paghar {
+        position: relative;
+        left: 42%;
+
+        transform: translateX(-50%);
+        top: -7% !important;
+
+        p {
+            font-size: 16.3px !important;
+        }
+    }
+}
+
+
+
+
+
+// Parte 2 
+
+@media (max-width: 500px) {
+    .twoimageParte2 {
+        display: flex;
+        justify-content: center !important;
+        margin-left: auto;
+        margin-right: -45px;
+    }
+
+    .paghar2 {
+        margin-left: auto;
+        margin-right: auto;
+
+        p {
+            font-size: 18.3px !important;
+        }
+    }
+}
+
+
+
+@media (min-width: 501px) and (max-width: 800px) {
+    .paghar2 {
+        // display:flex;
+        // justify-content:center !important;
+        margin-left: auto;
+        margin-right: auto;
+
+        p {
+            font-size: 19px !important;
+
+        }
+
+    }
+
+    .twoimageParte2 {
+        display: flex;
+        justify-content: center !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+@media (min-width: 801px) and (max-width: 1023px) {
+    .twoimageParte2 {
+        // position: relative;
+        left: 75%;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(-50%);
+        max-width: 40vh !important;
+
+
+    }
+
+    .paghar2 {
+        position: relative;
+        left: 64%;
+        transform: translateX(-50%);
+
+        p {
+            font-size: 14px !important;
+        }
+
+    }
+}
+
+
+@media (min-width:1024px) and (max-width: 1150px) {
+    .twoimageParte2 {
+        position: relative;
+        left: 72%;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(-50%);
+        max-width: 33vh !important;
+        top: 6% !important;
+
+    }
+
+    .img3partetwo {
+        max-width: 33vh !important;
+        position: relative;
+        left: -22%;
+
+    }
+
+    .paghar2 {
+        position: relative;
+        left: 65%;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(-50%);
+        top: -7% !important;
+
+        p {
+            font-size: 12.4px !important;
+        }
+    }
+}
+
+
+
+@media (min-width:1151px) and (max-width: 1279px) {
+    .twoimageParte2 {
+        position: relative;
+        left: 78%;
+
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(-50%);
+        top: 10% !important;
+
+    }
+
+    .img3partetwo {
+        left: -10%;
+
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .paghar2 {
+        position: relative;
+        left: 57%;
+
+        transform: translateX(-50%);
+        top: -7% !important;
+
+        p {
+            font-size: 15px !important;
+        }
+    }
+}
+
+
+
+@media (min-width:1279px) and (max-width: 1356px) {
+    .twoimageParte2 {
+        position: relative;
+        left: 78%;
+
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(-50%);
+        top: 10% !important;
+
+    }
+
+    .img3partetwo {
+        position: relative;
+        left: -16%;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .paghar2 {
+        position: relative;
+        left: 66% !important;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        transform: translateX(-50%);
+        top: 10% !important;
+
+        p {
+            font-size: 15px !important;
         }
     }
 }

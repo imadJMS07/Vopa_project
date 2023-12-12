@@ -1,7 +1,36 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import 'primeicons/primeicons.css';
+import 'aos/dist/aos.css';
+import Aos from 'aos';
 
-export default function Blogs() {
+
+function Blogs() {
+
+
+
+
     return (
-        <div>Blogs</div>
-    )
+        <>
+
+            <div>
+                Bogs
+            </div>
+
+        </>
+
+
+    );
 }
+
+export default Blogs;
+
+
+
+
+
+
+
+
