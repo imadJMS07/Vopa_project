@@ -44,6 +44,10 @@ export default function Reservation() {
     useEffect(() => {
         Aos.init({ duration: 2000 });
     });
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
     return (
         <>
             <div className="bg-cover bg-center mt-[100px] bg-image">

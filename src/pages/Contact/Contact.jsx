@@ -41,6 +41,10 @@ export default function Contact() {
         tl.to({}, { duration: 2 });
     }, []);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
+
 
     // Get value in input vild 
 

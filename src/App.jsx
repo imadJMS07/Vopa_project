@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import Routerr, { Home, About } from './Routerr'
+import Router, { Home, About } from './Router'
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import './App.css';
@@ -113,8 +113,7 @@ const App = () => {
   return (
     <>
 
-      <Routerr />
-
+      <Router />
 
 
       <div className="loading-screen" style={{ zIndex: 1 }}>
