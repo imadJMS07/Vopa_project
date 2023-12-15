@@ -17,6 +17,8 @@ import image4 from '../../images/img4.png'
 import image5 from '../../images/img_unsplashmaqz3x8l0.png'
 import image6 from '../../images/img_unsplashjpkfc5ddi.png'
 import image7 from '../../images/img_unsplashfdlzbwip0am.png'
+import choosee1 from '../../images/choosee1.png'
+
 
 import hero1 from '../../images/hero1.png'
 import hero2 from '../../images/hero2.png'
@@ -36,9 +38,9 @@ export default function About() {
 
     const { teams, clients, values, vision } = data
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, []);
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // }, []);
 
     useEffect(() => {
         Aos.init({ duration: 3000 });
@@ -69,6 +71,7 @@ export default function About() {
                     </div>
                     <img src={hero1} alt="" className='circle-image ml-11' data-aos="fade-right" />
                     <img src={hero2} alt="" className='circle-image ml-96 mt-10' data-aos="fade-left" />
+
                     <div className='flex justify-end mr-11' data-aos="fade-right">
 
                         <img src={hero3} alt="" className='circle-image ml-11' data-aos="fade-right" />
@@ -143,11 +146,11 @@ export default function About() {
 
                 {/* ******************** */}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 space-x-12 flex justify-center items-center  h-screen">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 space-x-12 flex justify-center items-center  h-screen lg:mt-[-130px] xl:mt-[-130px] 2xl:mt-[-130px]">
                     <div className="flex flex-col justify-center items-center text-center">
                         {values.map((item, index) => (
                             <React.Fragment key={index}>
-                                <h1 className="kalam text-4xl relative top-9" data-aos="fade-up">{item.title}</h1>
+                                <h1 className="Great text-4xl relative top-9" data-aos="fade-up">{item.title}</h1>
                                 <Text className="mt-10 text-center">
                                     <p className='kalam text-2xl font-bold ' data-aos="fade-right" >{item.pharagraph1}</p>
                                     <p className='kalam text-2xl font-bold ' data-aos="fade-left" >{item.pharagraph2}</p>
@@ -163,7 +166,7 @@ export default function About() {
                     <div className="flex flex-col justify-center items-center text-center mt-12 md:mt-0 relative top-5">
                         {vision.map((item, index) => (
                             <React.Fragment key={index}>
-                                <h1 className="kalam text-4xl" data-aos="fade-up">{item.title}</h1>
+                                <h1 className="Great  text-4xl" data-aos="fade-up">{item.title}</h1>
                                 <Text className="text-center">
                                     <p className='kalam text-2xl font-bold' data-aos="fade-right">{item.pharagraph1}</p>
                                     <p className='kalam text-2xl font-bold' data-aos="fade-left">{item.pharagraph2}</p>
@@ -175,16 +178,31 @@ export default function About() {
                             </React.Fragment>
                         ))}
                     </div>
+
+                    {/* <img src={hero2} alt="" className='circle-image absolute  top-[900px]  opacity-[0.5]' /> */}
+                    {/* <img src={hero2} alt="" className='circle-image absolute   top-[-390px]  opacity-[0.5]' /> */}
+                    {/* <img src={hero3} alt="" className='circle-image ' /> */}
                 </div>
 
 
 
+                {/* ******************** */}
 
 
-                <div className='h-[200ch]' >
-
+                <div className="container flex  flex-col  items-center mr-auto ml-auto " style={{ objectFit: 'cover' }}>
+                    <p className="Great text-[45px]  font-bold opacity-[0.8]" style={{}}>Why Choose us</p>
+                    <p className="kalam text-md text-center font-semibold  mr-auto ml-auto">Elevate your dining experience with us,   where health meets flavor seamlessly.</p>
+                    <p className="kalam text-md font-semibold  mr-auto ml-auto">Our restaurant is your go-to for delicious, wholesome meals crafted with care to nourish and delight</p>
+                    <img src={choosee1} className="mt-6" alt="" />
+                    <div className="grid grid-cols-3 flex justify-between">
+                        <div>A</div>
+                        <div>B</div>
+                        <div>C</div>
+                    </div>
                 </div>
 
+
+                <br /><br /><br /><br /><br />
             </Container>
 
 
