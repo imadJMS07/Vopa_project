@@ -44,9 +44,9 @@ const Menu = () => {
 
     return (
         <>
-            <div className='mt-96'>
+            {/* <div className='mt-96'>
                 {renderProductsByCategory()}
-            </div>
+            </div> */}
 
             <br /><br /><br /><br /><br />
         </>

@@ -94,50 +94,49 @@ const Home = () => {
 
 
     return (
-        <div className='mt-96'>
-            <h2>Add Product</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Name:</label>
-                <input type="text" name="name" value={product.name} onChange={handleChange} />
+        // <div className='mt-96'>
+        //     <h2>Add Product</h2>
+        //     <form onSubmit={handleSubmit}>
+        //         <label>Name:</label>
+        //         <input type="text" name="name" value={product.name} onChange={handleChange} />
 
 
 
-                <label>Image:</label>
-                <input type="file" name="image" onChange={handleChange} />
+        //         <label>Image:</label>
+        //         <input type="file" name="image" onChange={handleChange} />
 
-                <button type="submit">Add Product</button>
-            </form>
+        //         <button type="submit">Add Product</button>
+        //     </form>
 
-            {/* <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">name</th>
-                        <th scope="col">prix</th>
-                        <th scope="col">categorie</th>
-                        <th scope="col">Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        products.length > 0 && (
-                            products.map((row, key) => (
-                                <tr key={key}>
-                                    <td>{row.name}</td>
-                                    <td>{row.prix}</td>
-                                    <td>{row.category_id}</td>
-                                    <td>
-                                        <img width="800px" src={`http://127.0.0.1:8000/storage/product/image/${row.image}`} />
-                                    </td>
-                                </tr>
-                            ))
-                        )
-                    }
+        //     <table className="table">
+        //         <thead>
+        //             <tr>
+        //                 <th scope="col">name</th>
+        //                 <th scope="col">prix</th>
+        //                 <th scope="col">categorie</th>
+        //                 <th scope="col">Image</th>
+        //             </tr>
+        //         </thead>
+        //         <tbody>
+        //             {
+        //                 products.length > 0 && (
+        //                     products.map((row, key) => (
+        //                         <tr key={key}>
+        //                             <td>{row.name}</td>
+        //                             <td>{row.prix}</td>
+        //                             <td>{row.category_id}</td>
+        //                             <td>
+        //                                 <img width="800px" src={`http://127.0.0.1:8000/storage/product/image/${row.image}`} />
+        //                             </td>
+        //                         </tr>
+        //                     ))
+        //                 )
+        //             }
 
-                </tbody>
-            </table> */}
-
-
-        </div>
+        //         </tbody>
+        //     </table>
+        // </div>
+        <></>
     );
 };
 
