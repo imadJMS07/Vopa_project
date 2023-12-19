@@ -52,6 +52,14 @@
     font-family: $Inter;
 }
 
+.item {
+    color: $color_1;
+    font-family: bold;
+    font-family: $Inter;
+}
+
+
+
 .kalam {
     font-family: $Kalam;
 }
@@ -69,6 +77,21 @@
 // Parte 1
 
 @media (max-width: 500px) {
+    .why {
+        position: relative;
+        top: 140px;
+    }
+
+    .vison {
+        margin-left: 20px !important;
+    }
+
+    .items {
+        display: flex;
+        flex-direction: column !important;
+        position: relative;
+        top: 140px;
+    }
 
     .img {
 
@@ -95,6 +118,15 @@
 }
 
 @media (min-width: 501px) and (max-width: 800px) {
+    .vison {
+        margin-left: 20px !important;
+        margin-top: -100px !important;
+    }
+
+    .items {
+        display: flex;
+        flex-direction: column !important;
+    }
 
     .twoimage {
         display: flex;

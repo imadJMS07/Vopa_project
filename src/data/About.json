@@ -27,21 +27,21 @@
             "grand2": "  with Tailored,",
             "grand3": "Healthy Meal Solutio",
             "let2": "ns",
-            "pharagraph1": "We are proud to count among our B2B clients companies that", 
-            "pharagraph2":"care about the health and well-being of their employees. We",
-            "pharagraph3":"work closely with these companies to provide healthy, balanced", 
-            "pharagraph4":"and delicious meals, tailored to the specific needs of their ",
-            "pharagraph5":"team."
+            "pharagraph1": "We are proud to count among our B2B clients companies that",
+            "pharagraph2": "care about the health and well-being of their employees. We",
+            "pharagraph3": "work closely with these companies to provide healthy, balanced",
+            "pharagraph4": "and delicious meals, tailored to the specific needs of their ",
+            "pharagraph5": "team."
         }
     ],
     "values": [
         {
             "title": "Our values",
-            "pharagraph1": "At VOPA, we value freshness, sustainability" ,
-           "pharagraph2": "and creativity. We believe in the importance of respecting",
+            "pharagraph1": "At VOPA, we value freshness, sustainability",
+            "pharagraph2": "and creativity. We believe in the importance of respecting",
             "pharagraph3": "  the environment while providing healthy and delicious",
             "pharagraph4": "  dishes to our customers. Integrity, quality ingredients and",
-            "pharagraph5":"exceptional service are at the heart of our values."
+            "pharagraph5": "exceptional service are at the heart of our values."
         }
     ],
     "vision": [
@@ -53,5 +53,17 @@
             "pharagraph4": "diverse dishes. We aim to expand our impact by promoting ",
             "pharagraph5": "healthy eating habits within ourcommunity."
         }
-    ]
+    ],
+    "student": {
+        "title": "Best chef",
+        "pargha": "Experience culinary excellence with our top chef, where healthy meets delicious in every bite. Welcome to a world of flavor crafted by the best."
+    },
+    "coffee": {
+        "title": "item food",
+        "pargha": "Savor healthy and delicious dishes at our restaurant, where every bite is a celebration of luxury and flavour."
+    },
+    "person": {
+        "title": "clean Environment",
+        "pargha": "Dine in a pristine setting at our restaurant, where a commitment to a clean environment enhances the enjoyment of our healthy, flavorful offerings."
+    }
 }
