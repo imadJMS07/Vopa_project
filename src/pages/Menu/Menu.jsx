@@ -10,43 +10,38 @@ const Menu = () => {
         fetchProducts();
     }, [])
     const fetchProducts = async () => {
-        await axios.get('http://127.0.0.1:8000/api/products').then(({ data }) => { setProducts(data) })
+        await axios.get('http://127.0.0.1:8000/api/categories').then(({ data }) => { setProducts(data) })
     }
 
-    // Render your products grouped by category
-    const renderProductsByCategory = () => {
-        const productsByCategory = {};
 
-        // Group products by category
-        products.forEach((product) => {
-            const categoryName = product.category ? product.category.name : 'Uncategorized';
-            if (!productsByCategory[categoryName]) {
-                productsByCategory[categoryName] = [];
-            }
 
-            productsByCategory[categoryName].push(product);
-        });
 
-        // Render products by category
-        return Object.keys(productsByCategory).map((categoryName) => (
-            <div key={categoryName}>
-                <h2>{categoryName}</h2>
-                <ul>
-                    {productsByCategory[categoryName].slice(0, 6).map((product) => (
-                        <li key={product.id}>
-                            {product.name} - {product.prix} MAD -{product.category_id}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        ));
-    };
+
+
+
 
     return (
         <>
-            {/* <div className='mt-96'>
-                {renderProductsByCategory()}
-            </div> */}
+            <div className="container mx-auto mt-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {products.map((item, index) => (
+                    <div key={index} className="flex flex-col items-center">
+                        <img
+                            src={`http://127.0.0.1:8000/storage/product/image/${item.image}`}
+                            className="max-w-full h-auto"
+                            alt={`Product ${index}`}
+                        />
+                        <div className="mt-4 text-center">
+                            <p>Test</p>
+                            <p>Test</p>
+                            <p>Test</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+
+
+
 
             <br /><br /><br /><br /><br />
         </>

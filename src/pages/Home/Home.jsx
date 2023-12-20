@@ -56,6 +56,7 @@ const Home = () => {
         name: '',
         category_id: '',
         image: null,
+        prix: 0
     });
 
     const handleChange = (e) => {
@@ -71,9 +72,9 @@ const Home = () => {
 
         const formData = new FormData();
         formData.append('name', product.name);
-        formData.append('prix', 35);
+        formData.append('prix', product.prix);
         formData.append('image', product.image);
-        formData.append('category_id', 4);
+        formData.append('category_id', 3);
 
         try {
             await axios.post('http://127.0.0.1:8000/api/products', formData);
@@ -82,6 +83,40 @@ const Home = () => {
             console.error('Error adding product:', error);
         }
     };
+
+
+
+
+    // const [product, setProduct] = useState({
+    //     name: '',
+    //     image: null,
+    // });
+
+    // const handleChange = (e) => {
+    //     const { name, value, files } = e.target;
+    //     setProduct((prevProduct) => ({
+    //         ...prevProduct,
+    //         [name]: name === 'image' ? files[0] : value,
+    //     }));
+    // };
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     const formData = new FormData();
+    //     formData.append('name', product.name);
+    //     formData.append('image', product.image);
+
+    //     try {
+    //         await axios.post('http://127.0.0.1:8000/api/categories', formData);
+    //         console.log('category added successfully!');
+    //     } catch (error) {
+    //         console.error('Error adding category:', error);
+    //     }
+    // };
+
+
+
 
     // const [products, setProducts] = useState([])
     // useEffect(() => {
@@ -94,49 +129,53 @@ const Home = () => {
 
 
     return (
-        // <div className='mt-96'>
-        //     <h2>Add Product</h2>
-        //     <form onSubmit={handleSubmit}>
-        //         <label>Name:</label>
-        //         <input type="text" name="name" value={product.name} onChange={handleChange} />
+        <><div className='mt-96'>
+            <h2>Add Product</h2>
+            <form onSubmit={handleSubmit}>
+                <label>Name:</label>
+                <input type="text" name="name" value={product.name} onChange={handleChange} /> <br />
+
+
+                {/* <label>categorie:</label>
+                <input type="text" name="category_id" value={product.category_id} onChange={handleChange} /> <br /> */}
+
+                <label>prix:</label>
+                <input type="text" name="prix" value={product.prix} onChange={handleChange} /> <br />
 
 
 
-        //         <label>Image:</label>
-        //         <input type="file" name="image" onChange={handleChange} />
+                <label>Image:</label>
+                <input type="file" name="image" onChange={handleChange} /> <br />
 
-        //         <button type="submit">Add Product</button>
-        //     </form>
+                <button type="submit">Add Product</button>
+            </form>
 
-        //     <table className="table">
-        //         <thead>
-        //             <tr>
-        //                 <th scope="col">name</th>
-        //                 <th scope="col">prix</th>
-        //                 <th scope="col">categorie</th>
-        //                 <th scope="col">Image</th>
-        //             </tr>
-        //         </thead>
-        //         <tbody>
-        //             {
-        //                 products.length > 0 && (
-        //                     products.map((row, key) => (
-        //                         <tr key={key}>
-        //                             <td>{row.name}</td>
-        //                             <td>{row.prix}</td>
-        //                             <td>{row.category_id}</td>
-        //                             <td>
-        //                                 <img width="800px" src={`http://127.0.0.1:8000/storage/product/image/${row.image}`} />
-        //                             </td>
-        //                         </tr>
-        //                     ))
-        //                 )
-        //             }
+            {/* <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">name</th>
+                        <th scope="col">prix</th>
+                        <th scope="col">categorie</th>
+                        <th scope="col">Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products.length > 0 && (
+                        products.map((row, key) => (
+                            <tr key={key}>
+                                <td>{row.name}</td>
+                                <td>{row.prix}</td>
+                                <td>{row.category_id}</td>
+                                <td>
+                                    <img width="800px" src={`http://127.0.0.1:8000/storage/product/image/${row.image}`} />
+                                </td>
+                            </tr>
+                        ))
+                    )}
 
-        //         </tbody>
-        //     </table>
-        // </div>
-        <></>
+                </tbody>
+            </table> */}
+        </div><></></>
     );
 };
 
