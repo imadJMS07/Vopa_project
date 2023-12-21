@@ -74,7 +74,7 @@ const Home = () => {
         formData.append('name', product.name);
         formData.append('prix', product.prix);
         formData.append('image', product.image);
-        formData.append('category_id', 3);
+        formData.append('category_id', 8);
 
         try {
             await axios.post('http://127.0.0.1:8000/api/products', formData);

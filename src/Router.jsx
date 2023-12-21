@@ -19,6 +19,7 @@ import Blog from './pages/Blogs/Blogs';
 import Contact from './pages/Contact/Contact';
 import Logo from './images/logo2.png'
 import Footer from "./pages/Footer/Footer";
+import MenuByCat from './pages/Menu/ByCategorie/MenuByCat'
 
 const Link = ({ to, children }) => {
     const navigate = useNavigate();
@@ -128,6 +129,8 @@ const Routerr = () => {
                     <Route path="/reservastion" element={<Reservastion />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/menu/:id" element={<MenuByCat />} />
+
 
                 </Route>
             </Routes>

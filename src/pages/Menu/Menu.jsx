@@ -1,50 +1,119 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Menu = () => {
+    const Navigate = useNavigate()
     const [products, setProducts] = useState([]);
 
-
-
     useEffect(() => {
-        fetchProducts();
-    }, [])
-    const fetchProducts = async () => {
-        await axios.get('http://127.0.0.1:8000/api/categories').then(({ data }) => { setProducts(data) })
-    }
+        fetchAllProducts();
+    }, []);
+
+    const fetchAllProducts = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/products');
+            setProducts(response.data);
+        } catch (error) {
+            console.error('Error fetching all products:', error);
+        }
+    };
+
+    // Render your products grouped by category
+    const renderProductsByCategory = () => {
+        const productsByCategory = {};
+
+        // Group products by category
+        products.forEach((product) => {
+            const categoryName = product.category ? product.category.name : 'Uncategorized';
+            if (!productsByCategory[categoryName]) {
+                productsByCategory[categoryName] = { products: [], image: null };
+            }
+
+            productsByCategory[categoryName].products.push(product);
+
+            // Set the category image if not already set
+            if (!productsByCategory[categoryName].image) {
+                productsByCategory[categoryName].image = product.category ? product.category.image : null;
+            }
+        });
+
+        // Render products by category with alternating flex classes and left margin
+        let isFlexRow = true; // Start with flex-row
+        let index = 0;
+
+        return Object.keys(productsByCategory).map((categoryName) => {
+            const flexClass = isFlexRow ? 'flex-row' : 'flex-row-reverse';
+            const marginLeftClass = !isFlexRow ? 'right-32' : ''; // Add this line for left margin when using flex-row-reverse
+            const textEnd = !isFlexRow ? 'right-[140px]' : ''; // Add this line for left margin when using flex-row-reverse
+
+            isFlexRow = !isFlexRow; // Toggle for the next category
+            index += 1; // Increment index for the next category
+
+            return (
+                <div key={categoryName} className={`mx-52 flex ${flexClass} mt-28 ${marginLeftClass} mr-5 md:mr-10 lg:mr-32 space-x-4 md:space-x-8 lg:space-x-20 relative`}>
+                    {productsByCategory[categoryName].image && (
+                        <img className='' style={{ maxWidth: '100%', maxHeight: '75vh' }} src={`http://127.0.0.1:8000/storage/product/image/${productsByCategory[categoryName].image}`} alt={`Category: ${categoryName}`} />
+                    )}
+                    <div className={`relative ${textEnd}`}>
+                        <p className={`inter text-6xl font-extrabold relative`} style={{ color: "#195A00" }}>{categoryName}</p>
+                        <table className="table-auto">
+                            <tbody>
+                                {productsByCategory[categoryName].products.slice(0, 4).map((product) => (
+                                    <><tr key={product.id} className='space-x-24 space-y-20 hover:text-green-800 duration-600'>
+                                        <td>
+                                            <p className='Miniver text-xl font-bold'>
+                                                {product.name}
+                                            </p>
+                                            <p className='kalam text-lg'>
+                                                Matier1 Matier2 Matier3
+                                            </p>
+                                            <p className='kalam text-md'>
+                                                500 CAL
+                                            </p>
+                                        </td>
+                                        <td className='text-xl flex justify-end'>
+                                            <p className='relative top-[-67px] font-bold' style={{ color: "#195A00" }}>
+                                                {product.prix} MAD
+                                            </p>
+                                        </td>
+                                    </tr><tr className=''>
+                                            <td className='mt-14 w-[400px]'>
+                                                <hr />
+                                            </td>
+                                        </tr><tr className=''>
+                                            <td className='mt-14 w-[400px]'></td>
+                                        </tr></>
+                                ))}
+                                {productsByCategory[categoryName].products.length > 0 && (
+                                    <tr className=''>
+                                        <td>
+                                            <button
+                                                className='mt-3 border-2 border-green-800 w-28 h-10 rounded-md hover:border-none hover:bg-green-800 hover:text-white-A700 duration-700'
+                                                onClick={() => { Navigate(`/menu/${productsByCategory[categoryName].products[0].category.id}`) }}
+                                            >
+                                                View Menu
+                                            </button>
+                                        </td>
+                                    </tr>
+                                )}
 
 
-
-
-
-
-
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            );
+        });
+    };
 
     return (
-        <>
-            <div className="container mx-auto mt-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {products.map((item, index) => (
-                    <div key={index} className="flex flex-col items-center">
-                        <img
-                            src={`http://127.0.0.1:8000/storage/product/image/${item.image}`}
-                            className="max-w-full h-auto"
-                            alt={`Product ${index}`}
-                        />
-                        <div className="mt-4 text-center">
-                            <p>Test</p>
-                            <p>Test</p>
-                            <p>Test</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-
-
-
-
-            <br /><br /><br /><br /><br />
+        <><div className='mt-36 mb-20'>
+            {renderProductsByCategory()}
+        </div>
+            {/* <br /><br /><br /><br /> */}
         </>
+
     );
 };
 

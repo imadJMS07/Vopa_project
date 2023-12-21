@@ -1,0 +1,11 @@
+.container {
+    @media (max-width: 767px) {
+        .w-full {
+            width: 380px !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+    }
+}
