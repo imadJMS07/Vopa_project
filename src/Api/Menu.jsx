@@ -12,6 +12,30 @@ export const getProductByCategory = async (categoryId) => {
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
-        throw error; // Rethrow the error to handle it elsewhere
+        throw error;
+    }
+};
+
+
+export const getDetailsProduct = async (id) => {
+    try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/showDetails/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        throw error;
+    }
+};
+
+
+
+export const lastProduct = async (id) => {
+    try {
+
+        const response = await axios.get('http://127.0.0.1:8000/api/lastproducts');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        throw error;
     }
 };

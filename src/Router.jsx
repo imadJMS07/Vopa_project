@@ -11,6 +11,10 @@ import {
 } from "react-router-dom";
 import "./styles.css";
 
+import { Provider } from 'react-redux';
+import Store from './pages/store/Store';
+
+
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Menu from './pages/Menu/Menu';
@@ -20,7 +24,8 @@ import Contact from './pages/Contact/Contact';
 import Logo from './images/logo2.png'
 import Footer from "./pages/Footer/Footer";
 import MenuByCat from './pages/Menu/ByCategorie/MenuByCat'
-
+import Panier from "./pages/Panier/Panier";
+import Single from './pages/Menu/Single/Single'
 const Link = ({ to, children }) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -108,9 +113,7 @@ const Layout = () => {
                     </ul>
                 </div>
             </div>
-
             <Bars />
-
             <Outlet />
             <Footer />
         </>
@@ -120,7 +123,7 @@ const Layout = () => {
 
 const Routerr = () => {
     return (
-        <BrowserRouter>
+        <Provider store={Store}>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route path="/" element={<Home />} />
@@ -130,11 +133,11 @@ const Routerr = () => {
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/menu/:id" element={<MenuByCat />} />
-
-
+                    <Route path="/panier" element={<Panier />} />
+                    <Route path="/details/:id" element={<Single />} />
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </Provider>
     );
 };
 

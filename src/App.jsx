@@ -1,10 +1,16 @@
 import { useState } from 'react'
 
 import Router, { Home, About } from './Router'
+import Store from './pages/store/Store';
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import './App.css';
+import { Provider } from 'react-redux';
+
 const App = () => {
+
+
+
   // useEffect(() => {
   //   const counter3 = document.querySelector('.counter-3');
 
@@ -112,9 +118,8 @@ const App = () => {
 
   return (
     <>
-
+      {/* <Provider store={Store}> */}
       <Router />
-
 
       {/* <div className="loading-screen" style={{ zIndex: 1 }}>
         <div className="loader">
@@ -155,6 +160,9 @@ const App = () => {
           </div>
         </div>
       </div> */}
+      {/* </Provider> */}
+
+
 
     </>
   );

@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import etudiantReducer from './etudiantSlice';
+import panierReducer from '../Redux/PanieRreducers';
+
 const store = configureStore({
     reducer: {
-        // etudiants: etudiantReducer,
+        paniers: panierReducer,
     },
 });
+
 export default store;

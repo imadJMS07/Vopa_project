@@ -1,18 +1,75 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getProductByCategory } from '../../../Api/Menu';
+import { useDispatch } from 'react-redux';
+import { addPanierAction } from '../../Redux/PanieActions'
+// import { clearLocalStorage } from '../../Redux/PanieRreducers';
+import Aos from 'aos';
 
+
+const Pagination = ({ pageCount, currentPage, onPageChange }) => {
+    const hasPreviousPage = currentPage > 0;
+    const hasNextPage = currentPage < pageCount - 1;
+    return (
+        <nav aria-label="">
+            <div className="flex justify-center">
+                <ul className="list-style-none flex">
+                    {hasPreviousPage && (
+                        <li>
+                            <button
+                                className="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-green-800 dark:text-white  dark:hover:text-white"
+                                aria-label="Previous"
+                                onClick={() => onPageChange(currentPage - 1)}
+                            >
+                                <span aria-hidden="true">&laquo;</span>
+                            </button>
+                        </li>
+                    )}
+
+                    {Array.from({ length: pageCount }, (_, index) => index + 1).map((page) => (
+                        <li key={page} aria-current="page">
+                            <button
+                                className={`relative block rounded bg-transparent px-3 py-1.5 text-sm ${currentPage === page - 1
+                                    ? 'bg-neutral-100 text-neutral-800'
+                                    : 'text-neutral-600  dark:text-white hover:bg-green-800 dark:hover:text-white'
+                                    } transition-all duration-300`}
+                                onClick={() => onPageChange(page - 1)}
+                            >
+                                {page}
+                            </button>
+                        </li>
+                    ))}
+
+                    {hasNextPage && (
+                        <li>
+                            <button
+                                className="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-green-800 dark:text-white  dark:hover:text-white"
+                                aria-label="Next"
+                                onClick={() => onPageChange(currentPage + 1)}
+                            >
+                                <span aria-hidden="true">&raquo;</span>
+                            </button>
+                        </li>
+                    )}
+                </ul>
+            </div>
+        </nav>
+    );
+};
 const MenuByCat = () => {
-    const [products, setProducts] = useState([]);
+    const Navigate = useNavigate()
+    const dispatch = useDispatch();
+    const [tableID, setTableID] = useState([]);
     const { id } = useParams();
+    const [products, setProducts] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 9;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Make sure to handle the API response properly
                 const result = await getProductByCategory(Number(id));
 
-                // Check if 'products' is an array before setting the state
                 if (Array.isArray(result?.products)) {
                     setProducts(result.products);
                 } else {
@@ -26,67 +83,110 @@ const MenuByCat = () => {
         fetchData();
     }, [id]);
 
+    const pageCount = Math.ceil(products.length / itemsPerPage);
+    const visibleProducts = products.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+
+
+    const handleSubmit = (item) => {
+
+        const newPanier = {
+            id: item.id,
+            name: item.name,
+            prix: item.prix,
+            image: item.image,
+            quantity: 1,
+            total: item.prix * 1
+        }
+        dispatch(addPanierAction(newPanier));
+        // dispatch(clearLocalStorage());
+    };
+
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    })
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
     return (
         <>
+            {/* {tableID.map(item)} */}
             <div className="container flex justify-center mt-36">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {products && products.length > 0 ? (
-                        products.map((item, index) => (
-                            <div key={index} className="w-full md:w-80 bg-white shadow rounded mt-2 mb-12">
-                                <div
-                                    className="h-48 w-full bg-gray-200 flex flex-col justify-between p-4 bg-cover bg-center"
-                                    style={{
-                                        backgroundImage: `url(http://127.0.0.1:8000/storage/product/image/${item.image})`,
-                                    }}
-                                >
-                                    <div>
-                                        <span className="uppercase text-xs bg-green-50 p-1 border-green-500 border rounded text-green-700 font-medium select-none">
-                                            available
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="p-4 flex flex-col items-center">
-                                    <p className="text-gray-400 font-light text-xs text-center">Hammond robotics</p>
-                                    <h1 className="text-gray-800 text-center mt-1">{item.name}</h1>
-                                    <p className="text-center text-gray-800 mt-1">{`€${item.prix}`}</p>
-                                    <div className="inline-flex items-center mt-2">
-                                        {/* ... your existing code for rendering quantity buttons */}
-                                    </div>
-                                    <button className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center">
-                                        Add to order
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="h-6 w-6 ml-2"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                                            />
-                                        </svg>
-                                    </button>
+                    {visibleProducts.map((item, index) => (
+
+                        <div key={index} className="w-full md:w-80 bg-white shadow rounded mt-2 mb-12 hover:shadow-2xl hover:duration-700"
+                            data-aos="zoom-up"
+                        >
+                            <div
+                                className="h-48 w-full bg-gray-200 flex flex-col justify-between p-4 bg-cover bg-center"
+                                style={{
+                                    backgroundImage: `url(http://127.0.0.1:8000/storage/product/image/${item.image})`,
+                                }}
+                                onClick={() => { Navigate(`/details/${item.id}`) }}
+                            >
+                                <div onClick={() => { Navigate(`/details/${item.id}`) }}>
+                                    <span className="kalam uppercase text-xs bg-green-50 p-1 border-green-500 border rounded text-green-700 font-medium select-none">
+                                        available
+                                    </span>
                                 </div>
                             </div>
-                        ))
-                    ) : (
-                        <div id="loading-basic-example" class="h-[300px] w-full">
-                            <div
-                                data-te-loading-management-init
-                                data-te-parent-selector="#loading-basic-example">
-                                <div
-                                    data-te-loading-icon-ref
-                                    class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                                    role="status"></div>
-                                <span data-te-loading-text-ref>Loading...</span>
+                            <div className="p-4 flex flex-col items-center ">
+                                {/* <p onClick={() => { Navigate(`/details/${item.id}`) }} className="text-gray-400 font-light text-xs text-center">{item.category}</p> */}
+                                <h1 onClick={() => { Navigate(`/details/${item.id}`) }} className="text-gray-800 text-center mt-1 kalam">{item.name}</h1>
+                                <p onClick={() => { Navigate(`/details/${item.id}`) }} className="text-center text-gray-800 mt-1 kalam">{`${item.prix}`} MAD</p>
+                                <button id={id.item} value={id.item} className="py-2 px-4 bg-green-800 text-white rounded hover:bg-green-600 active:bg-green-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center"
+                                    onClick={() => handleSubmit(item)}
+
+                                >
+                                    Add to order
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-6 w-6 ml-2"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                                        />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
-                    )}
+                    ))}
+                </div>
+            </div >
+
+            <div className="fixed bottom-10 left-10">
+                <div className="relative">
+                    <div className="absolute -top-2 -right-2 bg-slate-50 text-green-800 rounded-full h-6 w-6 flex items-center justify-center">
+                        3
+                    </div>
+                    <Link to={'/panier'} className="py-3 px-4 text-white rounded disabled:opacity-50 flex items-center" style={{ background: '#195A00' }}>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6 text-slate-50"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                            />
+                        </svg>
+                    </Link>
                 </div>
             </div>
+
+
+            <Pagination pageCount={pageCount} currentPage={currentPage} onPageChange={setCurrentPage} />
         </>
     );
 };
