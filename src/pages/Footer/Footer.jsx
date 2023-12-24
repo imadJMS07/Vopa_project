@@ -1,18 +1,18 @@
 import React from 'react'
 
-
-
+import logo from '../../images/logo.png'
+import footer from '../../images/Footer.png'
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
         <footer
-            className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
+            className="bg-neutral-100 text-center text-neutral-600  dark:text-neutral-200 lg:text-left" style={{ background: "#a8bca1", opacity: '' }}>
             <div
                 className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
                 <div className="mr-12 hidden lg:block">
                     <span>Get connected with us on social networks:</span>
                 </div>
-                {/* <!-- Social network icons container --> */}
                 <div className="flex justify-center">
                     <a className="mr-6 text-neutral-600 dark:text-neutral-200">
                         <svg
@@ -84,26 +84,11 @@ export default function Footer() {
                 <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                     {/* <!-- TW Elements section --> */}
                     <div className="">
-                        <h6
-                            className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="mr-3 h-4 w-4">
-                                <path
-                                    d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
-                            </svg>
-                            TW Elements
-                        </h6>
-                        <p>
-                            Here you can use rows and columns to organize your footer
-                            content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit.
-                        </p>
+                        <img src={logo} className='max-w-[30vh] ml-20' alt="" />
+
                     </div>
                     {/* <!-- Products section --> */}
-                    <div className="">
+                    {/* <div className="">
                         <h6
                             className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                             Products
@@ -124,7 +109,7 @@ export default function Footer() {
                             <a className="text-neutral-600 dark:text-neutral-200"
                             >Laravel</a>
                         </p>
-                    </div>
+                    </div> */}
                     {/* <!-- Useful links section --> */}
                     <div className="">
                         <h6
@@ -132,21 +117,22 @@ export default function Footer() {
                             Useful links
                         </h6>
                         <p className="mb-4">
-                            <a className="text-neutral-600 dark:text-neutral-200"
-                            >Pricing</a>
+                            <Link to={'/home'} className="text-neutral-600 dark:text-neutral-200"
+                            >Home</Link>
                         </p>
                         <p className="mb-4">
-                            <a className="text-neutral-600 dark:text-neutral-200"
-                            >Settings</a>
+                            <Link to={'/about'} className="text-neutral-600 dark:text-neutral-200"
+                            >About</Link>
                         </p>
                         <p className="mb-4">
-                            <a className="text-neutral-600 dark:text-neutral-200"
-                            >Orders</a>
+                            <Link to={'/menu'} className="text-neutral-600 dark:text-neutral-200"
+                            >Menu</Link>
                         </p>
                         <p>
-                            <a className="text-neutral-600 dark:text-neutral-200"
-                            >Help</a>
+                            <Link to={'/reservation'} className="text-neutral-600 dark:text-neutral-200"
+                            >Reservastion </Link>
                         </p>
+
                     </div>
                     {/* <!-- Contact section --> */}
                     <div>
@@ -207,17 +193,25 @@ export default function Footer() {
                             + 01 234 567 89
                         </p>
                     </div>
+
+                    <div>
+                        <h6
+                            className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+                            instragram Gallery
+                        </h6>
+                    </div>
                 </div>
             </div>
-
+            <hr />
             {/* <!--Copyright section--> */}
-            <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+            <div className="bg-neutral-200 p-6 text-center " style={{ background: "#195A00" }}>
                 <span>© 2023 Copyright:</span>
                 <a
                     className="font-semibold text-neutral-600 dark:text-neutral-400"
                     href="https://tailwind-elements.com/"
-                >TW Elements</a>
+                >Voopa Food</a>
             </div>
-        </footer>
+        </footer >
+
     );
 }

@@ -1,6 +1,9 @@
+.slick-slide>div {
+    margin: 0 10px;
+}
+
 .circle-image-pic2 {
 
-    // overflow: hidden;
     border-radius: 50%;
     animation: rotate 100s linear infinite;
 }

@@ -26,6 +26,7 @@ import Footer from "./pages/Footer/Footer";
 import MenuByCat from './pages/Menu/ByCategorie/MenuByCat'
 import Panier from "./pages/Panier/Panier";
 import Single from './pages/Menu/Single/Single'
+import Add from "./Product/Add";
 const Link = ({ to, children }) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -135,6 +136,9 @@ const Routerr = () => {
                     <Route path="/menu/:id" element={<MenuByCat />} />
                     <Route path="/panier" element={<Panier />} />
                     <Route path="/details/:id" element={<Single />} />
+
+                    <Route path="/add" element={<Add />} />
+
                 </Route>
             </Routes>
         </Provider>

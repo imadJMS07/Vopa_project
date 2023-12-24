@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>Hello</p>
+    <p>My name is imad </p>
+
+    <div id="google_translate-element"></div>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+                'google_translate-element'
+            );
+        }
+    </script>
+</body>
+
+</html>

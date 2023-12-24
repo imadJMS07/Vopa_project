@@ -5,9 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import 'primeicons/primeicons.css';
 import 'aos/dist/aos.css';
 import Aos from 'aos';
-
-
-
 import '../About/About.scss'
 import data from '../../data/About.json'
 import image1 from '../../images/Team.png'
@@ -23,32 +20,16 @@ import Person from '../../images/Person.png'
 import Coffee from '../../images/Coffee.png'
 import nab1 from '../../images/nab.png'
 import nab2 from '../../images/nab2.png'
-
-
-
-
-
 import hero1 from '../../images/hero1.png'
 import hero2 from '../../images/hero2.png'
 import hero3 from '../../images/hero3.png'
-
-
-
-
-
-
-
-
-
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
-
     const { teams, clients, values, vision, person, student, coffee } = data
-
-    // useEffect(() => {
-    //     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // }, []);
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
 
     useEffect(() => {
         Aos.init({ duration: 3000 });
@@ -148,12 +129,6 @@ export default function About() {
                     </div>
 
                 </div>
-
-
-
-
-                {/* ******************** */}
-
                 <div className=" grid grid-cols-1 md:grid-cols-2 gap-2 space-x-12 flex justify-center items-center  h-screen lg:mt-[-130px] xl:mt-[-130px] 2xl:mt-[-130px]">
                     <div className="flex flex-col justify-center items-center text-center">
                         {values.map((item, index) => (
@@ -194,12 +169,6 @@ export default function About() {
                     <img src={hero3} alt="" className='hidden xl:block circle-image absolute' />
 
                 </div>
-
-
-
-                {/* ******************** */}
-
-
                 <div className="why container flex  flex-col  items-center mr-auto ml-auto " style={{ objectFit: 'cover' }}>
                     <p className="Great text-[45px]  font-bold opacity-[0.8]" style={{}}>Why Choose us</p>
                     <p className="kalam text-md text-center font-semibold  mr-auto ml-auto">Elevate your dining experience with us,   where health meets flavor seamlessly.</p>
@@ -235,26 +204,12 @@ export default function About() {
                     </div>
                 </div>
                 {/* </div> */}
-
-
                 <br /><br /><br /><br /><br />
             </Container>
-
-
-
-
-
-
-
-
-
-
-
         </>
     )
 }
 ;
-
 
 const Container = styled.div`
   width: 100%;
