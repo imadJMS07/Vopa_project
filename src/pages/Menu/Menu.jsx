@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Menu = () => {
+    const url = "http://127.0.0.1:8000";
     const Navigate = useNavigate()
     const [products, setProducts] = useState([]);
 
@@ -12,8 +13,10 @@ const Menu = () => {
 
     const fetchAllProducts = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/products');
+            const response = await axios.get(`${url}/api/products`);
             setProducts(response.data);
+            console.log(response.data)
+
         } catch (error) {
             console.error('Error fetching all products:', error);
         }
@@ -53,12 +56,12 @@ const Menu = () => {
             return (
                 <div key={categoryName} className={`mx-52 flex ${flexClass} mt-28 ${marginLeftClass} mr-5 md:mr-10 lg:mr-32 space-x-4 md:space-x-8 lg:space-x-20 relative`}>
                     {productsByCategory[categoryName].image && (
-                        <img className='' style={{ maxWidth: '100%', maxHeight: '75vh' }} src={`http://127.0.0.1:8000/storage/product/image/${productsByCategory[categoryName].image}`} alt={`Category: ${categoryName}`} />
+                        <img className='max-w-[190vh]' style={{ maxHeight: '75vh', maxWidth: '57vh', objectFit: 'cover' }} src={`${url}/storage/product/image/${productsByCategory[categoryName].image}`} alt={`Category: ${categoryName}`} />
                     )}
                     <div className={`relative ${textEnd}`}>
                         <p className={`inter text-6xl font-extrabold relative`} style={{ color: "#195A00" }}>{categoryName}</p>
                         <table className="table-auto">
-                            <tbody>
+                            <tbody >
                                 {productsByCategory[categoryName].products.slice(0, 4).map((product) => (
                                     <><tr key={product.id} className='space-x-24 space-y-20 hover:text-green-800 duration-600'>
                                         <td>
@@ -66,10 +69,10 @@ const Menu = () => {
                                                 {product.name}
                                             </p>
                                             <p className='kalam text-lg'>
-                                                Matier1 Matier2 Matier3
+                                                {product.description}
                                             </p>
                                             <p className='kalam text-md'>
-                                                500 CAL
+                                                {product.cal} CAL
                                             </p>
                                         </td>
                                         <td className='text-xl flex justify-end'>

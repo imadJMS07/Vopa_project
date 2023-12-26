@@ -10,6 +10,7 @@ import hero2 from '../../../images/hero2.png';
 import hero3 from '../../../images/hero3.png';
 
 const Single = () => {
+    const url = 'http://127.0.0.1:8000';
     const selectedPanier = useSelector((state) => state.paniers.Paniers);
     const count = selectedPanier.length;
     const Navigate = useNavigate()
@@ -59,7 +60,7 @@ const Single = () => {
 
     useEffect(() => {
         // Fetch product data from the Laravel API
-        axios.get(`http://127.0.0.1:8000/api/showDetails/${id}`)
+        axios.get(`${url}/api/showDetails/${id}`)
             .then(response => {
                 setProduct(response.data);
             })
@@ -71,7 +72,7 @@ const Single = () => {
 
     useEffect(() => {
         // Fetch product data from the Laravel API
-        axios.get(`http://127.0.0.1:8000/api/showDetailsCategori/${id}`)
+        axios.get(`${url}/api/showDetailsCategori/${id}`)
             .then(response => {
                 setCategorie(response.data);
             })
@@ -88,7 +89,7 @@ const Single = () => {
 
     useEffect(() => {
         // Fetch product data from the Laravel API
-        axios.get('http://127.0.0.1:8000/api/lastproducts')
+        axios.get(`${url}/api/lastproducts`)
             .then(response => {
                 setLast(response.data);
             })
@@ -119,7 +120,7 @@ const Single = () => {
                 <div className="grid sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-2">
                     <div>
                         <img
-                            src={`http://127.0.0.1:8000/storage/product/image/${product.image}`}
+                            src={`${url}/storage/product/image/${product.image}`}
                             alt=""
                             className='rounded-xl max-w-[55vh] max-h-[900vh]'
                             onClick={() => { setIsModalOpen(true) }}
@@ -167,7 +168,7 @@ const Single = () => {
                 <div className="fixed inset-0 z-50 flex items-center justify-center" data-aos="zoom-up">
                     <div className="absolute inset-0 bg-black opacity-50" onClick={closeModal}></div>
                     <div className="bg-white p-4 z-10">
-                        <img src={`http://127.0.0.1:8000/storage/product/image/${product.image}`} className='rounded-xl max-w-[55vh] max-h-[900vh]' alt="" style={{ minWidth: '100vh', maxHeight: "80vh", objectFit: "cover" }} />
+                        <img src={`${url}/storage/product/image/${product.image}`} className='rounded-xl max-w-[55vh] max-h-[900vh]' alt="" style={{ minWidth: '100vh', maxHeight: "80vh", objectFit: "cover" }} />
                     </div>
                 </div>
             )}
@@ -186,7 +187,7 @@ const Single = () => {
                                 <div
                                     className="h-48 w-full bg-gray-200 flex flex-col justify-between p-4 bg-cover bg-center"
                                     style={{
-                                        backgroundImage: `url(http://127.0.0.1:8000/storage/product/image/${item.image})`,
+                                        backgroundImage: `url(${url}/storage/product/image/${item.image})`,
                                     }}
                                     onClick={() => { Navigate(`/details/${item.id}`) }}
                                 >

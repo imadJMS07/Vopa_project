@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getProductByCategory } from '../../../Api/Menu';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addPanierAction } from '../../Redux/PanieActions'
 // import { clearLocalStorage } from '../../Redux/PanieRreducers';
 import Aos from 'aos';
@@ -10,7 +10,9 @@ import Aos from 'aos';
 const Pagination = ({ pageCount, currentPage, onPageChange }) => {
     const hasPreviousPage = currentPage > 0;
     const hasNextPage = currentPage < pageCount - 1;
+
     return (
+
         <nav aria-label="">
             <div className="flex justify-center">
                 <ul className="list-style-none flex">
@@ -57,6 +59,7 @@ const Pagination = ({ pageCount, currentPage, onPageChange }) => {
     );
 };
 const MenuByCat = () => {
+    const url = 'http://127.0.0.1:8000';
     const Navigate = useNavigate()
     const dispatch = useDispatch();
     const [tableID, setTableID] = useState([]);
@@ -64,6 +67,9 @@ const MenuByCat = () => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 9;
+    const selectedPanier = useSelector((state) => state.paniers.Paniers);
+    const count = selectedPanier.length;
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -121,7 +127,7 @@ const MenuByCat = () => {
                             <div
                                 className="h-48 w-full bg-gray-200 flex flex-col justify-between p-4 bg-cover bg-center"
                                 style={{
-                                    backgroundImage: `url(http://127.0.0.1:8000/storage/product/image/${item.image})`,
+                                    backgroundImage: `url(${url}/storage/product/image/${item.image})`,
                                 }}
                                 onClick={() => { Navigate(`/details/${item.id}`) }}
                             >
@@ -164,7 +170,8 @@ const MenuByCat = () => {
             <div className="fixed bottom-10 left-10">
                 <div className="relative">
                     <div className="absolute -top-2 -right-2 bg-slate-50 text-green-800 rounded-full h-6 w-6 flex items-center justify-center">
-                        3
+                        {/* {count} */}
+                        {count}
                     </div>
                     <Link to={'/panier'} className="py-3 px-4 text-white rounded disabled:opacity-50 flex items-center" style={{ background: '#195A00' }}>
                         <svg

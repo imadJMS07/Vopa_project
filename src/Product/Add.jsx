@@ -2,7 +2,20 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 export default function Add() {
+    const url = 'http://127.0.0.1:8000';
 
+    const [cat, setCat] = useState([])
+
+    useEffect(() => {
+        // Fetch product data from the Laravel API
+        axios.get(`${url}/api/categories`)
+            .then(response => {
+                setCat(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
 
 
     const [product, setProduct] = useState({
@@ -35,7 +48,7 @@ export default function Add() {
         formData.append('category_id', product.category_id);
 
         try {
-            await axios.post('http://127.0.0.1:8000/api/products', formData);
+            await axios.post(`${url}/api/products`, formData);
             console.log('Product added successfully!');
         } catch (error) {
             console.error('Error adding product:', error);
@@ -65,15 +78,22 @@ export default function Add() {
         formData.append('image', category.image);
 
         try {
-            await axios.post('http://127.0.0.1:8000/api/categories', formData);
+            await axios.post(`${url}/api/categories`, formData);
             console.log('category added successfully!');
         } catch (error) {
             console.error('Error adding category:', error);
         }
     };
 
+
+
     return (
         <>
+
+
+            {cat.map((item) => (
+                <p>ppppp dddddddddd{item.name}</p>
+            ))}
             <div className='mt-36'>
                 <h2>Add categorie</h2>
                 <form onSubmit={handleSubmitCategory}>

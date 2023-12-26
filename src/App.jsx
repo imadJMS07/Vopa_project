@@ -118,7 +118,6 @@ const App = () => {
 
   return (
     <>
-      {/* <Provider store={Store}> */}
       <Router />
 
       {/* <div className="loading-screen" style={{ zIndex: 1 }}>
@@ -160,7 +159,6 @@ const App = () => {
           </div>
         </div>
       </div> */}
-      {/* </Provider> */}
 
 
 

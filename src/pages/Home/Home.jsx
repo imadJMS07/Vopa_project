@@ -35,13 +35,12 @@ import hero2 from '../../images/hero2.png'
 import hero3 from '../../images/hero3.png'
 gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
-
+    const url = "http://127.0.0.1:8000";
     const [category, setCategory] = useState([]);
     const [last, setLast] = useState([]);
 
     useEffect(() => {
-        // Fetch product data from the Laravel API
-        axios.get('http://127.0.0.1:8000/api/categories')
+        axios.get(`${url}/api/categories`)
             .then(response => {
                 setCategory(response.data);
             })
@@ -51,7 +50,7 @@ export default function Home() {
     }, []);
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/lastproducts')
+        axios.get(`${url}/api/lastproducts`)
             .then(response => {
                 setLast(response.data);
             })
@@ -89,9 +88,9 @@ export default function Home() {
     };
 
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, []);
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // }, []);
 
     return (
         <>
@@ -171,13 +170,12 @@ export default function Home() {
                         </Text>
                     </React.Fragment>
                 </div>
-                <img src={hero1} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-700px] left-[1500px]' />
+                <img src={hero1} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-700px] left-[1200px]' />
                 <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-700px] left-12' />
                 <img src={hero3} alt="" className='hidden xl:block 2xl:block circle-image ml-11 relative top-[-340px]' />
-                <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-300px] left-[1500px] ' />
+                <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-300px] left-[1200px] ' />
 
             </div>
-
 
 
 
@@ -188,19 +186,18 @@ export default function Home() {
                     <p className='flex justify-center kalam text-xl'>Whether it's fruits, vegetables, dairy, or meats, this concept simplifies navigating the rich world of</p>
                     <p className='flex justify-center kalam text-xl'>  flavors and textures.</p>
                 </Text>
-                <img src={hero3} alt="" className='hidden xl:block 2xl:block circle-image ml-11 relative top-[-140px]' />
-                <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[00px] left-[1500px] ' />
+                <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[00px] left-[1000px] ' />
 
-            </div>
+            </div >
 
 
-            <div className='w-3/4  m-auto' data-aos="fade-up">
+            <div div className='w-3/4  m-auto' data-aos="fade-up" >
                 <div className="mt-20 space-x-9 ">
                     <Slider {...settings}>
                         {category.map((d) => (
                             <div key={d.id} className=" bg-white h-[450px] text-black rounded-xl  border-2  hover:shadow-2xl rounded-t-xl hover:duration-700">
-                                <div className='h-72 bg-indigo-500 flex justify-center items-center rounded-t-xl'>
-                                    <img src={`http://127.0.0.1:8000/storage/product/image/${d.image}`} alt="" className="h-72 w-[377px] rounded-t-xl  " />
+                                <div className='h-72 bg-green-800 flex justify-center items-center rounded-t-xl'>
+                                    <img src={`${url}/storage/product/image/${d.image}`} alt="" className="h-72 w-[377px] rounded-t-xl  " />
                                 </div>
 
                                 <div className="flex flex-col items-center justify-center gap-4 p-4">
@@ -213,7 +210,7 @@ export default function Home() {
                 </div>
                 <img src={hero3} alt="" className='hidden xl:block 2xl:block circle-image mr-20 relative top-[-40px] ' />
 
-                <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-200px] left-[1300px] ' />
+                <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[100px] left-[900px] ' />
 
             </div >
 
@@ -298,7 +295,6 @@ export default function Home() {
                 Last Blogs & News
             </div>
             <div className="container flex justify-center  ">
-
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
                     {last && last.length > 0 ? (
                         last.map((item, index) => (
@@ -308,7 +304,7 @@ export default function Home() {
                                 <div
                                     className="h-48 w-full bg-gray-200 flex flex-col justify-between p-4 bg-cover bg-center"
                                     style={{
-                                        backgroundImage: `url(http://127.0.0.1:8000/storage/product/image/${item.image})`,
+                                        backgroundImage: `url(${url}/storage/product/image/${item.image})`,
                                     }}
                                     onClick={() => { Navigate(`/details/${item.id}`) }}
                                 >
@@ -319,7 +315,6 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div className="p-4 flex flex-col items-center ">
-                                    {/* <p onClick={() => { Navigate(`/details/${item.id}`) }} className="text-gray-400 font-light text-xs text-center">{item.category}</p> */}
                                     <h1 onClick={() => { Navigate(`/details/${item.id}`) }} className="text-gray-800 text-center mt-1 kalam">{item.name}</h1>
                                     <p onClick={() => { Navigate(`/details/${item.id}`) }} className="text-center text-gray-800 mt-1 kalam">{`${item.prix}`} MAD</p>
                                     <button className="py-2 px-4 bg-green-800 text-white rounded hover:bg-green-600 active:bg-green-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center"
@@ -342,17 +337,18 @@ export default function Home() {
                                             />
                                         </svg>
                                     </button>
-                                </div>
-                            </div>
+                                </div >
+                            </div >
                         ))
                     ) : (
                         <p>No products available.</p>
-                    )}
-                </div>
-            </div>
+                    )
+                    }
+                </div >
+            </div >
 
 
-            <div className="container mx-auto mt-44">
+            < div className="container mx-auto mt-44" >
                 <div className="flex justify-center">
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-32'>
                         <div>
@@ -367,9 +363,6 @@ export default function Home() {
                                         <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-right"> a flavorful and nourishing delight. From colorful salads to protein-packed</p>
                                         <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-left">entrees, every bite at <span>Voopa Food</span> is a celebration of well-being.</p>
                                         <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-right">A must-try for those who appreciate a perfect balance of taste and health!</p>
-
-
-
                                     </Text>
                                 </React.Fragment>
                             </div>
@@ -383,8 +376,7 @@ export default function Home() {
                 <img src={hero3} alt="" className='hidden xl:block 2xl:block circle-image ml-11 relative top-[-340px]' />
                 <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-300px] right-[100px] ' />
 
-            </div>
-            {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> */}
+            </div >
         </>
     )
 }

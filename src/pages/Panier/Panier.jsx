@@ -7,7 +7,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const Panier = () => {
-
+    const url = 'http://127.0.0.1:8000';
     const dispatch = useDispatch();
     const selectedPanier = useSelector((state) => state.paniers.Paniers);
     const count = selectedPanier.length;
@@ -18,12 +18,8 @@ const Panier = () => {
     const [order, setOrder] = useState({
         firstName: '',
         lastName: '',
-        company: '',
-        contry: "Morocco",
         address: '',
         city: '',
-        StateCounty: "",
-        zip: '',
         phone: '',
         email: '',
 
@@ -36,12 +32,8 @@ const Panier = () => {
                 const data = {
                     firstName: order.firstName,
                     lastName: order.lastName,
-                    company: order.company,
-                    contry: order.contry,
                     address: order.address,
                     city: order.city,
-                    StateCounty: order.StateCounty,
-                    zip: order.zip,
                     phone: order.phone,
                     email: order.email,
                     PrixTotal: totalSum,
@@ -49,7 +41,7 @@ const Panier = () => {
                 };
 
                 try {
-                    await axios.post('http://127.0.0.1:8000/api/commandes', data);
+                    await axios.post(`${url}/api/commandes`, data);
                     console.log('commandes added successfully!');
                     Swal.fire({
                         icon: "success",
@@ -110,6 +102,7 @@ const Panier = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
 
+
     return (
         <>
             <div className=" bg-gray-100 pt-20  ">
@@ -118,7 +111,7 @@ const Panier = () => {
                         {selectedPanier.map((item) => (
                             <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start hover:text-green-800 hover:shadow-2xl hover:duration-700">
                                 <img
-                                    src={`http://127.0.0.1:8000/storage/product/image/${item.image}`} alt="product-image"
+                                    src={`${url}/storage/product/image/${item.image}`} alt="product-image"
                                     className=" rounded-lg w-20 h-20"
                                 />
                                 <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between mt-3">
@@ -224,16 +217,7 @@ const Panier = () => {
                                     <input type="text" placeholder='Last Name here' className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="lastName" id="lastName" onChange={getValue} />
                                 </div>
                             </div>
-                            <div className=' grid grid-cols-1 md:grid-cols-2 gap-4'>
-                                <div>
-                                    <p className="kalam">Company *</p>
-                                    <input type='text' placeholder='Company here' className="w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="company" id="company" onChange={getValue} />
-                                </div>
-                                <div>
-                                    <p className="kalam">Contry *</p>
-                                    <input type='text' value={order.contry} className="w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="contry" id="contry" disabled />
-                                </div>
-                            </div>
+
 
                             <div className=' grid grid-cols-1 md:grid-cols-2 gap-4'>
                                 <div>
@@ -241,27 +225,13 @@ const Panier = () => {
                                     <input type='text' placeholder='City here' className="w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="city" id="city" onChange={getValue} />
                                 </div>
                                 <div>
-                                    <p className="kalam">State/County *</p>
-                                    <input type='text' placeholder='State/County here' className="w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="StateCounty" id="StateCounty" onChange={getValue} />
-
-
-                                </div>
-                            </div>
-
-
-                            <div className=' grid grid-cols-1 md:grid-cols-2 gap-4'>
-                                <div>
-                                    <p className="kalam">Zip *</p>
-                                    <input type='text' placeholder='Zip here' className="w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="zip" id="zip" onChange={getValue} />
-
-                                </div>
-                                <div>
                                     <p className="kalam">Phone *</p>
                                     <input type='tel' placeholder='Phone here' className="w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="phone" id="phone" onChange={getValue} />
-
-
                                 </div>
                             </div>
+
+
+
                             <div className='grid grid-cols-1 mt-3'>
                                 <div>
                                     <p className="kalam">Address *</p>
@@ -274,8 +244,6 @@ const Panier = () => {
                                     <input type='email' placeholder='Email here' className="w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="email" id="email" onChange={getValue} />
                                 </div>
                             </div>
-
-
 
 
                             <div className='grid grid-cols-1 md:grid-cols-2 mt-4 gap-4'>

@@ -11,14 +11,67 @@ import hero3 from '../../images/hero3.png'
 
 
 import '../Reservation/Reservation.scss'
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default function Reservation() {
+    const url = 'http://127.0.0.1:8000';
 
-    const [reservation, setReservation] = useState({ name: '', email: '', tel: '', date: '', from: '', to: '', guests: '', info: '' });
     const [cancelReservation, setCancelReservation] = useState({ numbervoice: '', emailvoice: '', telvoice: '' });
     const { time, input_name, input_email, input_contact, input_date, input_form, input_To, input_guests, input_info, button, concellation, cancel, invoice_number, message, phone } = data;
 
     const [showModal, setShowModal] = useState(false);
+
+    const [reservation, setReservation] = useState({ name: '', email: '', phone: '', date: '', from: '', to: '', guests: '', information: 'undefined' });
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (reservation.name !== '' && reservation.email !== '' && reservation.phone !== '' && reservation.date !== '' && reservation.from !== '' && reservation.to !== '' && reservation.guests !== '') {
+
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "All field is required",
+            });
+        }
+
+        if (new Date(`2000-01-01T${reservation.to}`) <= new Date(`2000-01-01T${reservation.from}`)) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "SThe 'to' time must be greater than 'from' time.",
+            });
+
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('name', reservation.name);
+        formData.append('email', reservation.email);
+        formData.append('phone', reservation.phone);
+        formData.append('date', reservation.date);
+        formData.append('from', reservation.from);
+        formData.append('to', reservation.to);
+        formData.append('guests', reservation.guests);
+        formData.append('information', reservation.information);
+
+        try {
+            await axios.post(`${url}/api/reservations`, formData);
+            Swal.fire({
+                icon: "success",
+                title: "Reservations added successfully!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } catch (error) {
+            console.error('Error adding reservations:', error);
+        }
+    };
+
+
+
+
 
     const toggleModal = () => {
         setShowModal(!showModal);
@@ -48,6 +101,8 @@ export default function Reservation() {
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
+
+    console.log(reservation.from)
     return (
         <>
             <div className="bg-cover bg-center mt-[100px] bg-image">
@@ -88,7 +143,7 @@ export default function Reservation() {
                     <div className='grid grid-cols-1 md:grid-cols-2 mt-4 gap-4'>
                         <div data-aos="fade-right">
                             <p className="kalam" >{input_contact.label}</p>
-                            <input type="tel" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" placeholder={input_contact.placeHolder} style={{ background: "#EAEAEA" }} name="tel" id="tel" onChange={getValue} />
+                            <input type="tel" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" placeholder={input_contact.placeHolder} style={{ background: "#EAEAEA" }} name="phone" id="phone" onChange={getValue} />
                         </div>
 
                         <div data-aos="fade-left">
@@ -134,14 +189,14 @@ export default function Reservation() {
                     <div className='grid grid-cols-1 mt-3'>
                         <div data-aos="fade-up">
                             <p className="kalam">{input_info.label}</p>
-                            <textarea name="info" id="info" className="w-full h-[150px] md:h-18 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} placeholder={input_info.placeHolder} onChange={getValue}></textarea>
+                            <textarea name="information" id="information" className="w-full h-[150px] md:h-18 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} placeholder={input_info.placeHolder} onChange={getValue}></textarea>
                         </div>
                     </div>
 
 
                     <div className='grid grid-cols-1 md:grid-cols-2 mt-4 gap-4'>
                         <div data-aos="zoom-out">
-                            <button type="button" className="kalamButton w-36  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md  focus:outline-none" name="from" id="from" onChange={getValue} >{button.label}</button>
+                            <button type="button" className="kalamButton w-36  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md  focus:outline-none" name="from" id="from" onClick={handleSubmit} >{button.label}</button>
                             <button className='inline-block ml-3 kalamButtonC' onClick={toggleModal}>{concellation.label}</button>
                         </div>
 
