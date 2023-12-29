@@ -75,7 +75,7 @@ const Layout = () => {
     return (
 
         <>
-            <div style={{ zIndex: 1, backgroundColor: '#ffff' }} className='shadow-lg  w-full fixed top-0 left-0  h-26' >
+            <div style={{ zIndex: 1, backgroundColor: '#fff' }} className={`shadow-lg  w-full fixed top-0 left-0   ${open ? 'duration-700 h-[470px]' : 'h-26'} `} >
                 <div className=' md:flex items-center justify-between   bg-white  md:px-10 px-7'>
                     <div className=' flex items-center '>
                         <img src={Logo} className="Logo w-24" alt="VOPA_LOGA" />
@@ -102,6 +102,7 @@ const Layout = () => {
                         <li className='md:ml-8 md:my-0 my-7 font-semibold'>
                             <Link to="/blog" className=' duration-500'>BLOG</Link>
                         </li>
+
                         <li className='md:ml-8 md:my-0 my-7 font-semibold'>
                             <button class="rounded-full   border-2 border-lime-600 h-11 w-32  hover:border-none hover:bg-lime-600 transition-all duration-700">
                                 <Link to="/contact" className=' duration-500 ' >CONTACT</Link>

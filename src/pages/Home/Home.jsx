@@ -94,10 +94,13 @@ export default function Home() {
 
     return (
         <>
-            <div className="mt-24 mb-96 gridHome">
+
+
+
+            <div className="mt-24 mb-96 gridHome flex flex-col-reverse">
                 <div className='gridHome grid grid-cols-1 sm:grid-cols-2 gap-4'>
 
-                    <div className='space-y-5 relative xl:left-36 xl:top-20'>
+                    <div className='space-y-5 relative xl:left-36 xl:top-20 '>
                         <p className='miniver' style={{}}>
                             Healthy & Testy Food <hr className='ml-6 w-9 inline-block' />
                         </p>
@@ -108,9 +111,9 @@ export default function Home() {
                             Indulge in a life of wellness with the perfect fusion of health and tasty delights. <br /> Enjoy a healthy life and delicious food, making every moment a celebration of well-being
                         </p>
 
-                        <div className='flex flex-row gap-5'>
-                            <button type="button" className="kalamButton w-44  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 ">Show More</button>
-                            <button type="button" className="kalam border-green-800 border-[1.5px] text-green-800 w-44  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md  ">Reserve Now</button>
+                        <div className='buttonHome flex flex-row gap-5'>
+                            <button type="button" className=" kalamButton w-44  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 hover:shadow-2xl duration-700 hover:duration-700">Show More</button>
+                            <button type="button" className="kalam border-green-800 border-[1.5px] text-green-800 w-44  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md  hover:shadow-2xl duration-700 hover:duration-700">Reserve Now</button>
 
                         </div>
                     </div>
@@ -124,7 +127,7 @@ export default function Home() {
             </div>
 
             <div
-                className='maw-w-[90vh]'
+                className='welcom maw-w-[90vh]'
                 style={{
                     backgroundImage: `url(${bgWelcome})`,
                     backgroundSize: "cover",
@@ -147,7 +150,6 @@ export default function Home() {
                 </div>
             </div >
 
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8 md:mt-[90px] flex justify-center">
                 <div className="space-x-2 flex justify-center md:col-span-2 lg:col-span-1 " data-aos="fade-left" >
                     <img src={image3} alt="" className="img3 ml-4 md:ml-[180px] mt-4 md:mt-16 lg:mt-0 hidden lg:flex xl:block 2xl:block" />
@@ -158,15 +160,40 @@ export default function Home() {
                 </div>
                 <div className="paghar relative mt-8 md:mt-[100px] lg:right-[150px]">
                     <React.Fragment >
-                        <h1 className="miniver text-2xl" data-aos="fade-right">Healthy Food <hr className='miniver inline-block w-20 h-1' /> </h1>
-                        <h6 className="inter text-4xl" data-aos="fade-right"><span className='t' style={{ color: '#195A00' }}>Food </span><span className='relative '>is an important</span></h6>
-                        <h6 className="inter text-4xl" data-aos="fade-right"><span className='t' style={{ color: '#195A00' }}>part of a balanced  </span><span className='relative '>Diet</span></h6>
+                        <h1 className="miniver text-2xl" >Healthy Food <hr className='miniver inline-block w-20 h-1' /> </h1>
+                        <h6 className="inter text-4xl" ><span className='t' style={{ color: '#195A00' }}>Food </span><span className='relative '>is an important</span></h6>
+                        <h6 className="inter text-4xl" ><span className='t' style={{ color: '#195A00' }}>part of a balanced  </span><span className='relative '>Diet</span></h6>
                         <Text>
-                            <p className="kalam w-full mt-5" style={{ fontSize: '20px' }} data-aos="fade-right">A well-rounded diet is crucial for overall health, providing  </p>
-                            <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-left">essential nutrients that support bodily functions.  </p>
-                            <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-right"> Beyond physical benefits, food also carries cultural and </p>
-                            <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-left">social significance, contributing to a balanced and </p>
-                            <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-right"> fulfilling lifestyle.</p>
+                            <p className="kalam w-full mt-5" style={{ fontSize: '20px' }} >A well-rounded diet is crucial for overall health, providing  </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} >essential nutrients that support bodily functions.  </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} > Beyond physical benefits, food also carries cultural and </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} >social significance, contributing to a balanced and </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} > fulfilling lifestyle.</p>
+                        </Text>
+                    </React.Fragment>
+                </div>
+            </div>
+
+
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8 md:mt-[90px] ">
+                <div className="space-x-2 flex justify-center md:col-span-2 lg:col-span-1 "  >
+                    <img src={image3} alt="" className="img3 ml-4 md:ml-[180px] mt-4 md:mt-16 lg:mt-0 hidden lg:flex xl:block 2xl:block" />
+                </div>
+                <div className=" flex justify-center flex-col space-y-4 mt-8 relative md:mt-[60px] ms:left-36"  >
+                    <img src={image2} alt="" className="img" />
+                    <img src={image4} alt="" className="img" />
+                </div>
+                <div className="paghar relative mt-8 md:mt-[100px] lg:right-[150px]">
+                    <React.Fragment >
+                        <h1 className="miniver text-2xl" >Healthy Food <hr className='miniver inline-block w-20 h-1' /> </h1>
+                        <h6 className="inter text-4xl" ><span className='t' style={{ color: '#195A00' }}>Food </span><span className='relative '>is an important</span></h6>
+                        <h6 className="inter text-4xl" ><span className='t' style={{ color: '#195A00' }}>part of a balanced  </span><span className='relative '>Diet</span></h6>
+                        <Text>
+                            <p className="kalam w-full mt-5" style={{ fontSize: '20px' }} >A well-rounded diet is crucial for overall health, providing  </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} >essential nutrients that support bodily functions.  </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} > Beyond physical benefits, food also carries cultural and </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} >social significance, contributing to a balanced and </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} > fulfilling lifestyle.</p>
                         </Text>
                     </React.Fragment>
                 </div>
@@ -175,11 +202,41 @@ export default function Home() {
                 <img src={hero3} alt="" className='hidden xl:block 2xl:block circle-image ml-11 relative top-[-340px]' />
                 <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-300px] left-[1200px] ' />
 
-            </div>
+            </div> */}
 
+            {/* <div className="container mx-auto mt-36">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                    <div className='flex flex-col mx-auto relative xl:top-44 xl:left-20' >
+                        <h1 className="miniver text-2xl" >Healthy Food <hr className='miniver inline-block w-20 h-1' /> </h1>
+                        <h6 className="inter text-4xl" ><span className='t' style={{ color: '#195A00' }}>Food </span><span className='relative '>is an important</span></h6>
+                        <h6 className="inter text-4xl" ><span className='t' style={{ color: '#195A00' }}>part of a balanced  </span><span className='relative '>Diet</span></h6>
+                        <Text>
+                            <p className="kalam w-full mt-5" style={{ fontSize: '20px' }} >A well-rounded diet is crucial for overall health, providing  </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} >essential nutrients that support bodily functions.  </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} > Beyond physical benefits, food also carries cultural and </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} >social significance, contributing to a balanced and </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} > fulfilling lifestyle.</p>
+                        </Text>
+                    </div>
 
+                    <div className='grid grid-cols-2 md:grid-cols-2 xl:space-x-9 lg:space-x-20 '>
+                        <div>
+                            <div className="twooimage flex justify-center flex-col space-y-4 relative  xl:top-20 md:left-11"  >
+                                <img src={image2} alt="" className="img" />
+                                <img src={image4} alt="" className="img" />
+                            </div>
+                        </div>
+                        <div className='relative xl:right-12 lg:left-1 '>
+                            <div className=""  >
+                                <img src={image3} alt="" className="max-w-[43vh] hidden relative md:right-11 lg:block xl:block 2xl:block " />
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div className="flex  flex-col  mx-auto mt-36" data-aos="fade-up">
+            </div> */}
+
+            <div className="flex  flex-col  mx-auto mt-36" >
                 <p className='flex justify-center text-5xl miniver ' >Food Catagory</p>
                 <Text>
                     <p className='flex justify-center kalam mt-5 text-xl'>In the realm of cuisine, 'Food Category'helps classify and organize diverse foods based on shared characteristics. </p>
@@ -191,13 +248,13 @@ export default function Home() {
             </div >
 
 
-            <div div className='w-3/4  m-auto' data-aos="fade-up" >
+            <div div className='w-3/4   m-auto '  >
                 <div className="mt-20 space-x-9 ">
                     <Slider {...settings}>
                         {category.map((d) => (
                             <div key={d.id} className=" bg-white h-[450px] text-black rounded-xl  border-2  hover:shadow-2xl rounded-t-xl hover:duration-700">
                                 <div className='h-72 bg-green-800 flex justify-center items-center rounded-t-xl'>
-                                    <img src={`${url}/storage/product/image/${d.image}`} alt="" className="h-72 w-[377px] rounded-t-xl  " />
+                                    <img src={`${url}/storage/product/image/${d.image}`} alt="" className="h-72 w-[377px] rounded-t-xl  " style={{ objectFit: 'cover' }} />
                                 </div>
 
                                 <div className="flex flex-col items-center justify-center gap-4 p-4">
@@ -219,28 +276,28 @@ export default function Home() {
                 <div className='grid grid-cols-1 sm:grid-cols-2  gap-'>
                     <div>
 
-                        <img src={Chaf} alt="" data-aos="fade-right" />
-                        <img src={imm2} className='hidden lg:block xl:block 2xl:block absolute top-[3600px] left-[400px]' alt="" />
+                        <img src={Chaf} alt="" />
+                        <img src={imm2} className='hidden lg:block xl:block 2xl:block absolute top-[3480px] left-[400px]' alt="" />
 
                     </div>
                     <div className='relative xl:left-24 xl:top-28'>
                         <div className="relative" >
-                            <h1 className="miniver text-2xl" data-aos="fade-right">Why choose us <hr className='miniver inline-block w-20 h-1' /> </h1>
-                            <h6 className="inter text-4xl" data-aos="fade-right"><span className='t' style={{ color: '#195A00' }}>Why </span><span className='relative '>We are the best?</span></h6>
+                            <h1 className="miniver text-2xl" >Why choose us <hr className='miniver inline-block w-20 h-1' /> </h1>
+                            <h6 className="inter text-4xl" ><span className='t' style={{ color: '#195A00' }}>Why </span><span className='relative '>We are the best?</span></h6>
                             <Text>
-                                <p className="kalam w-full mt-5" style={{ fontSize: '20px' }} data-aos="fade-right">Choose us because we stand out as the best. Our commitment </p>
-                                <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-left"> to excellence,unparalleled quality,and customer satisfaction</p>
-                                <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-right">  make us a top choice. With a track record of delivering </p>
-                                <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-left"> exceptional results ,we prioritize your needs, ensuring an </p>
-                                <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-right">experience  that goes beyond expectations.</p>
+                                <p className="kalam w-full mt-5" style={{ fontSize: '20px' }} >Choose us because we stand out as the best. Our commitment </p>
+                                <p className="kalam w-full " style={{ fontSize: '20px' }} > to excellence,unparalleled quality,and customer satisfaction</p>
+                                <p className="kalam w-full " style={{ fontSize: '20px' }} >  make us a top choice. With a track record of delivering </p>
+                                <p className="kalam w-full " style={{ fontSize: '20px' }} > exceptional results ,we prioritize your needs, ensuring an </p>
+                                <p className="kalam w-full " style={{ fontSize: '20px' }} >experience  that goes beyond expectations.</p>
 
                             </Text>
-                            <div className='flex flex-row gap-4 mt-7' data-aos="fade-left">
+                            <div className='flex flex-row gap-4 mt-7' >
                                 <button className='kalam w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} > <img src={Truck} className='w-10 ml-6 mt-1' alt="" /> <span className='relative top-[-30px] left-2'>Fast delivery</span> </button>
                                 <button className='kalam w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} ><img src={Timer} className='w-10 ml-6 mt-1' alt="" /> <span className='relative top-[-30px] left-2'> 24/7 services</span>  </button>
                             </div>
 
-                            <div className='flex flex-row gap-4 mt-3' data-aos="fade-left">
+                            <div className='flex flex-row gap-4 mt-3' >
                                 <button className='kalam w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} ><img src={Hamburger} className='w-10 ml-6 mt-1' alt="" /><span className='relative top-[-30px] left-2'>Fresh food</span> </button>
                                 <button className='kalam w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} ><img src={Factory} className='w-10 ml-6 mt-1' alt="" /> <span className='relative top-[-30px] left-5'>Qualiti maintain</span> </button>
                             </div>
@@ -256,31 +313,31 @@ export default function Home() {
                 </div>
             </div >
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mt-[150px] ">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mt-[150px] ">
 
                 <div className="paghar2 relative mt-8 mt-[150px]  xl:left-56  ">
                     <React.Fragment >
-                        <h1 className="miniver text-2xl" data-aos="fade-down">Wednesday means <hr className='miniver inline-block w-20 h-1' /> </h1>
-                        <h6 className="inter text-6xl " data-aos="fade-down"><span className='t' >Happy hours!</span></h6>
-                        <h6 className="kalam text-2xl mt-3" style={{ color: '#195A00' }} data-aos="fade-down">Half-price bottles of wine and six tasty lunches for $9</h6>
+                        <h1 className="miniver text-2xl" >Wednesday means <hr className='miniver inline-block w-20 h-1' /> </h1>
+                        <h6 className="inter text-6xl " ><span className='t' >Happy hours!</span></h6>
+                        <h6 className="kalam text-2xl mt-3" style={{ color: '#195A00' }} >Half-price bottles of wine and six tasty lunches for $9</h6>
                         <Text>
-                            <p className="kalam w-full mt-3" style={{ fontSize: '20px' }} data-aos="fade-right">Congue, gravida. Placeat nibh sunt semper elementum anim! </p>
-                            <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-left">Integer lectus debitis auctor.Nunc quisquam adipisicing leo, </p>
-                            <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-right">tempora ipsam pede nostrum.Turpis tempus fusce, sed, orci </p>
-                            <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-left">eligendi</p>
+                            <p className="kalam w-full mt-3" style={{ fontSize: '20px' }} >Congue, gravida. Placeat nibh sunt semper elementum anim! </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} >Integer lectus debitis auctor.Nunc quisquam adipisicing leo, </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} >tempora ipsam pede nostrum.Turpis tempus fusce, sed, orci </p>
+                            <p className="kalam w-full " style={{ fontSize: '20px' }} >eligendi</p>
 
 
 
                         </Text>
                     </React.Fragment>
                 </div>
-                <div className="twoimageParte2 flex justify-center flex-col space-y-4 relative mt-16 xl:left-72" data-aos="fade-left">
+                <div className="twoimageParte2 flex justify-center flex-col space-y-4 relative mt-16 xl:left-72" >
                     <img src={image5} alt="" className="img " />
                     <img src={image6} alt="" className="img" />
                 </div>
 
                 <div className="flex justify-center md:col-span-2 lg:col-span-1">
-                    <img src={image7} data-aos="fade-right" alt="" className="img3partetwo   mt-4 md:mt-16 lg:mt-0 hidden lg:flex xl:block 2xl:block xl:mr-9" />
+                    <img src={image7} alt="" className="img3partetwo   mt-4 md:mt-16 lg:mt-0 hidden lg:flex xl:block 2xl:block xl:mr-9" />
                 </div>
 
                 <img src={hero1} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-70px] left-[300px]' />
@@ -288,12 +345,14 @@ export default function Home() {
                 <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-100px] left-[400px] ' />
 
 
-            </div>
+            </div> */}
 
 
             <div className='flex miniver kalam justify-center mt-48  text-6xl inter'>
                 Last Blogs & News
             </div>
+
+
             <div className="container flex justify-center  ">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
                     {last && last.length > 0 ? (
@@ -354,21 +413,21 @@ export default function Home() {
                         <div>
                             <div className="paghar2 relative      ">
                                 <React.Fragment >
-                                    <h1 className="miniver text-2xl" data-aos="fade-down">Testimonials <hr className='miniver inline-block w-20 h-1' /> </h1>
-                                    <h6 className="inter text-6xl " data-aos="fade-down"><span className='t' >Customer Review</span></h6>
+                                    <h1 className="miniver text-2xl" >Testimonials <hr className='miniver inline-block w-20 h-1' /> </h1>
+                                    <h6 className="inter text-6xl " ><span className='t' >Customer Review</span></h6>
                                     <img src={Quotes} alt="" />
                                     <Text>
-                                        <p className="kalam w-full mt-3" style={{ fontSize: '20px' }} data-aos="fade-right">At <span>Voopa Food</span>, healthy dining is an art form. Their menu,filled with </p>
-                                        <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-left">vibrant and locally-sourced ingredients,transforms each meal into</p>
-                                        <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-right"> a flavorful and nourishing delight. From colorful salads to protein-packed</p>
-                                        <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-left">entrees, every bite at <span>Voopa Food</span> is a celebration of well-being.</p>
-                                        <p className="kalam w-full " style={{ fontSize: '20px' }} data-aos="fade-right">A must-try for those who appreciate a perfect balance of taste and health!</p>
+                                        <p className="kalam w-full mt-3" style={{ fontSize: '20px' }} >At <span>Voopa Food</span>, healthy dining is an art form. Their menu,filled with </p>
+                                        <p className="kalam w-full " style={{ fontSize: '20px' }} >vibrant and locally-sourced ingredients,transforms each meal into</p>
+                                        <p className="kalam w-full " style={{ fontSize: '20px' }} > a flavorful and nourishing delight. From colorful salads to protein-packed</p>
+                                        <p className="kalam w-full " style={{ fontSize: '20px' }} >entrees, every bite at <span>Voopa Food</span> is a celebration of well-being.</p>
+                                        <p className="kalam w-full " style={{ fontSize: '20px' }} >A must-try for those who appreciate a perfect balance of taste and health!</p>
                                     </Text>
                                 </React.Fragment>
                             </div>
                         </div>
                         <div>
-                            <img src={pay} className='max-w-[70vh]' alt="" data-aos="fade-left" />
+                            <img src={pay} className='max-w-[68.5vh]' alt="" />
                         </div>
                     </div>
                 </div>

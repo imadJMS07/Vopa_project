@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import '../Blogs/Blogs.scss'
+import './Blogs.scss'
 import data from '../../data/Blogs.json'
 
 
@@ -146,11 +146,11 @@ function Blogs() {
                 <div className="grid justify-items-center relative top-24 ">
                     <p className="  about font-bold  text-9xl sm:text-1xl ">{title}</p>
                 </div>
-                <img src={hero1} alt="" className='circle-image ml-11' data-aos="fade-left" />
-                <img src={hero2} alt="" className='circle-image ml-96 mt-10' data-aos="fade-left" />
-                <div className='flex justify-end mr-11' data-aos="fade-right">
-                    <img src={hero2} alt="" className='circle-image ' data-aos="fade-right" />
-                    <img src={hero3} alt="" className='circle-image ml-11' data-aos="fade-left" />
+                <img src={hero1} alt="" className='circle-image ml-11' data-aos="fade-up" />
+                <img src={hero2} alt="" className='circle-image ml-96 mt-10' data-aos="fade-up" />
+                <div className='flex justify-end mr-11' data-aos="fade-up">
+                    <img src={hero2} alt="" className='circle-image ' data-aos="fade-up" />
+                    <img src={hero3} alt="" className='circle-image ml-11' data-aos="fade-up" />
                 </div>
             </div>
 
@@ -163,7 +163,15 @@ function Blogs() {
                                 <div key={index} className="imaage flex flex-col justify-end" data-aos="zoom-up">
 
 
-                                    <img src={blog.image} className="img3" alt="" />
+                                    <img src={blog.image} className="img3 sm:max-w-[30vh]" style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} alt="" />
+                                    {/* .img3,
+                                    .img3partetwo {
+                                        max - height: 65vh !important;
+                                    background-size: cover;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+} */}
+
                                     <div className="flex flex-row">
                                         <img src={Calendar} className="w-6 mt-3" alt="" />
                                         <p className="mt-3 ml-1 text-md text-gray-900 font-medium">{blog.date} /</p>
@@ -173,7 +181,7 @@ function Blogs() {
                                     <p className="text-3xl fon mt-2 text-gray-700 font-semibold">{blog.title}</p>
                                     <hr className="mt-6" />
                                     <Text>
-                                        <p className="kalam w-[600px] mt-5">{blog.content}</p>
+                                        <p className="kalam xl:w-[600px] mt-5">{blog.content}</p>
                                     </Text>
                                 </div>
                             ))}

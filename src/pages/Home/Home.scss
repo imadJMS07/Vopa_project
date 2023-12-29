@@ -19,12 +19,26 @@
 }
 
 
+
+
 @media (max-width:639px) {
     .gridHome {
         display: flex;
-        flex-direction: column-reverse !important;
+        flex-direction: column !important;
+        margin-top: 7%;
+    }
+
+    .buttonHome {
+        margin-left: 10%;
+
 
     }
+
+    .welcom {
+        height: 95vh;
+    }
+
+
 }
 
 
@@ -66,5 +80,25 @@
         max-width: 59vh !important;
         margin-left: 13%;
         margin-top: 40px;
+    }
+}
+
+
+
+@media (max-width:767px) {
+    .twooimage {
+        // margin-left: 50%;
+        position: relative;
+        left: 50%;
+        top: 5%;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .twooimage {
+        // margin-left: 50%;
+        position: relative;
+        left: 70%;
+        top: 5%;
     }
 }

@@ -184,21 +184,21 @@ export default function About() {
                             <img src={Student} alt="Student" className=" mx-auto mt-12" />
                             <p className="item text-xl font-semibold relative top-2 ">{student.title}</p>
                             <Text>
-                                <p className="text-sm text-gray-500 relative top-3 w-[340px]">{student.pargha}</p>
+                                <p className="text-lg kalam text-gray-500 relative top-3 w-[340px]">{student.pargha}</p>
                             </Text>
                         </div>
                         <div className="text-center" data-aos="fade-up">
                             <img src={Coffee} alt="Coffee" className=" mx-auto" />
                             <p className="item text-xl font-semibold relative top-2">{coffee.title}</p>
                             <Text>
-                                <p className="text-sm text-gray-500 relative top-3 w-[340px]">{coffee.pargha}</p>
+                                <p className="text-lg kalam text-gray-500 relative top-3 w-[340px]">{coffee.pargha}</p>
                             </Text>
                         </div>
                         <div className="text-center " data-aos="fade-left">
                             <img src={Person} alt="Person" className=" mx-auto mt-5" />
                             <p className="item text-xl font-semibold relative top-2">{person.title}</p>
                             <Text>
-                                <p className="text-sm text-gray-500 relative top-3  w-[340px]">{person.pargha}</p>
+                                <p className="text-lg text-gray-500 relative top-3  w-[340px] kalam">{person.pargha}</p>
                             </Text>
                         </div>
                     </div>

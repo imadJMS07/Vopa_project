@@ -99,11 +99,11 @@ export default function Contact() {
                 <div className="grid justify-items-center relative top-24 ">
                     <p className="  about font-bold  text-9xl sm:text-1xl ">Contact </p>
                 </div>
-                <img src={hero1} alt="" className='circle-image ml-11' data-aos="fade-left" />
-                <img src={hero2} alt="" className='circle-image ml-96 mt-10' data-aos="fade-left" />
-                <div className='flex justify-end mr-11' data-aos="fade-right">
-                    <img src={hero2} alt="" className='circle-image ' data-aos="fade-right" />
-                    <img src={hero3} alt="" className='circle-image ml-11' data-aos="fade-left" />
+                <img src={hero1} alt="" className='circle-image ml-11' data-aos="fade-up" />
+                <img src={hero2} alt="" className='circle-image ml-96 mt-10' data-aos="fade-up" />
+                <div className='flex justify-end mr-11' data-aos="fade-up">
+                    <img src={hero2} alt="" className='circle-image ' data-aos="fade-up" />
+                    <img src={hero3} alt="" className='circle-image ml-11' data-aos="fade-up" />
                 </div>
 
             </div>
@@ -115,23 +115,23 @@ export default function Contact() {
                     <div className="container ">
                         <div className=" grid grid-cols-1 gap-4 w-96 md:w-[480px] mt-10 ml-auto mr-auto bg-slate-50 rounded-sm shadow-xl p-6 xl:ml-[280px]">
                             <div className=' grid grid-cols-1 md:grid-cols-1 gap-4'>
-                                <div data-aos="fade-right">
+                                <div data-aos="fade-up">
                                     <p className="kalam flex justify-start text-2xl font-bold" style={{ color: '#195A00' }}>{qestions}</p>
                                 </div>
-                                <div data-aos="fade-right">
+                                <div data-aos="fade-up">
                                     <p className="kalam flex justify-start text-lg">{input_name.label}</p>
                                     <input type="text" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600 " placeholder={input_name.placeHolder} style={{ background: "#EAEAEA" }} name="name" id="name" onChange={getValue} value={sendMessageToEmail.name} />
                                 </div>
-                                <div data-aos="fade-right">
+                                <div data-aos="fade-up">
                                     <p className="kalam flex justify-start text-lg">{input_email.label}</p>
                                     <input type="text" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600 " placeholder={input_email.placeHolder} style={{ background: "#EAEAEA" }} name="email" id="email" onChange={getValue} value={sendMessageToEmail.email} />
                                 </div>
-                                <div data-aos="fade-right">
+                                <div data-aos="fade-up">
                                     <p className="kalam flex justify-start text-lg">{input_subject.label}</p>
                                     <input type="text" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600 " placeholder={input_subject.placeHolder} style={{ background: "#EAEAEA" }} name="subject" id="subject" onChange={getValue} value={sendMessageToEmail.subject} />
                                 </div>
 
-                                <div data-aos="fade-right">
+                                <div data-aos="fade-up">
                                     <p className="kalam flex justify-start text-lg">{message.label}</p>
                                     <textarea name="message" id="message" className="w-full h-[150px] md:h-18 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} placeholder={message.placeHolder} onChange={getValue} value={sendMessageToEmail.message}></textarea>
                                 </div>
@@ -175,7 +175,7 @@ export default function Contact() {
             <div div class="container mr-auto ml-auto mt-36 flex justify-center " >
                 <div className="mr-auto ml-auto grid grid-cols-1 md:grid-cols-3 gap-3 space-x-2 mt-20  ">
 
-                    <div className='w-[380px]  h-[300px]  pt-12 flex justify-center items-center flex-col hover:bg-green-100  border-green-600 border-[0.5px] transition ease-in-out delay-150 xl:hover:-translate-y-1 xl:hover:scale-110  duration-700' data-aos="fade-right">
+                    <div className='w-[380px]  h-[300px]  pt-12 flex justify-center items-center flex-col hover:bg-green-100  border-green-600 border-[0.5px] transition ease-in-out delay-150 xl:hover:-translate-y-1 xl:hover:scale-110  duration-700' data-aos="fade-up">
                         {/* " bg-blue-500 hover:bg-indigo-500 */}
                         <p className='kalam text-3xl relative bottom-14'>{card.phone}</p>
                         <i className="pi pi-phone  relative bottom-2" style={{ fontSize: '60px', color: '#195A00' }}></i>
@@ -190,7 +190,7 @@ export default function Contact() {
                         <p>M.benmousa2@gmail.com</p>
                     </div>
 
-                    <div className='w-[380px]  h-[300px] pt-12 flex justify-center items-center flex-col hover:bg-green-100  border-green-600 border-[0.5px] transition ease-in-out delay-150 xl:hover:-translate-y-1 xl:hover:scale-110  duration-700' data-aos="fade-left">
+                    <div className='w-[380px]  h-[300px] pt-12 flex justify-center items-center flex-col hover:bg-green-100  border-green-600 border-[0.5px] transition ease-in-out delay-150 xl:hover:-translate-y-1 xl:hover:scale-110  duration-700' data-aos="fade-up">
                         <p className='kalam text-3xl relative bottom-14'>{card.phone}</p>
                         <i className="pi pi-map-marker relative bottom-2" style={{ fontSize: '60px', color: '#195A00' }}></i>
                         <p>12 Park Street Road,</p>
@@ -215,8 +215,8 @@ export default function Contact() {
             </div >
 
             <div className='mt-[-300px]'>
-                <img src={hero1} alt="" className='circle-image hidden xl:block lg:block 2xl:block relative top-[-1500px] left-4 ' data-aos="fade-left" />
-                <img src={hero1} alt="" className='circle-image hidden xl:block lg:block 2xl:block relative top-[-1500px] left-[85%] ' data-aos="fade-left" />
+                <img src={hero1} alt="" className='circle-image hidden xl:block lg:block 2xl:block relative top-[-1500px] left-4 ' data-aos="fade-up" />
+                <img src={hero1} alt="" className='circle-image hidden xl:block lg:block 2xl:block relative top-[-1500px] left-[85%] ' data-aos="fade-up" />
 
                 <img src={hero2} alt="" className='circle-image hidden xl:block lg:block 2xl:block relative top-[-1230px] left-[85%]' data-aos="fade-left " />
                 <img src={hero3} alt="" className='circle-image hidden xl:block lg:block 2xl:block relative top-[-1000px] left-[20%]' data-aos="fade-left " />
