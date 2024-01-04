@@ -10,7 +10,7 @@ import hero2 from '../../../images/hero2.png';
 import hero3 from '../../../images/hero3.png';
 
 const Single = () => {
-    const url = 'http://127.0.0.1:8000';
+    const url = 'https://api.chocolatpatis.shop';
     const selectedPanier = useSelector((state) => state.paniers.Paniers);
     const count = selectedPanier.length;
     const Navigate = useNavigate()

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Menu = () => {
-    const url = "http://127.0.0.1:8000";
+    const url = "https://api.chocolatpatis.shop";
     const Navigate = useNavigate()
     const [products, setProducts] = useState([]);
 

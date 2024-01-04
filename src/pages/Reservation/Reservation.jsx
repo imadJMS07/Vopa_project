@@ -15,7 +15,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default function Reservation() {
-    const url = 'http://127.0.0.1:8000';
+    const url = 'https://api.chocolatpatis.shop';
 
     const [cancelReservation, setCancelReservation] = useState({ numbervoice: '', emailvoice: '', telvoice: '' });
     const { time, input_name, input_email, input_contact, input_date, input_form, input_To, input_guests, input_info, button, concellation, cancel, invoice_number, message, phone } = data;

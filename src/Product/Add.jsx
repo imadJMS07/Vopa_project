@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 export default function Add() {
-    const url = 'http://127.0.0.1:8000';
+    const url = 'https://api.chocolatpatis.shop';
 
     const [cat, setCat] = useState([])
 

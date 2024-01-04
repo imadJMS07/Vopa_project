@@ -7,7 +7,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const Panier = () => {
-    const url = 'http://127.0.0.1:8000';
+    const url = 'https://api.chocolatpatis.shop';
     const dispatch = useDispatch();
     const selectedPanier = useSelector((state) => state.paniers.Paniers);
     const count = selectedPanier.length;

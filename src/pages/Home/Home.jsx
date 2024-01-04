@@ -35,7 +35,7 @@ import hero2 from '../../images/hero2.png'
 import hero3 from '../../images/hero3.png'
 gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
-    const url = "http://127.0.0.1:8000";
+    const url = "https://api.chocolatpatis.shop";
     const [category, setCategory] = useState([]);
     const [last, setLast] = useState([]);
 

@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 export const getProduct = async () => {
-    const { data } = await axios.get('http://127.0.0.1:8000/api/products');
+    const { data } = await axios.get('https://api.chocolatpatis.shop/api/products');
     return data;
 };
 
 
 export const getProductByCategory = async (categoryId) => {
     try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/filterByCategoryy/${categoryId}`);
+        const response = await axios.get(`https://api.chocolatpatis.shop/api/filterByCategoryy/${categoryId}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -19,7 +19,7 @@ export const getProductByCategory = async (categoryId) => {
 
 export const getDetailsProduct = async (id) => {
     try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/showDetails/${id}`);
+        const response = await axios.get(`https://api.chocolatpatis.shop/api/showDetails/${id}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -32,7 +32,7 @@ export const getDetailsProduct = async (id) => {
 export const lastProduct = async (id) => {
     try {
 
-        const response = await axios.get('http://127.0.0.1:8000/api/lastproducts');
+        const response = await axios.get('https://api.chocolatpatis.shop/api/lastproducts');
         return response.data;
     } catch (error) {
         console.error('Error fetching products:', error);
