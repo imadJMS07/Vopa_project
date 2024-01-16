@@ -59,7 +59,7 @@ const Pagination = ({ pageCount, currentPage, onPageChange }) => {
     );
 };
 const MenuByCat = () => {
-    const url = 'https://api.chocolatpatis.shop';
+    const url = 'http://127.0.0.1:8000';
     const Navigate = useNavigate()
     const dispatch = useDispatch();
     const [tableID, setTableID] = useState([]);

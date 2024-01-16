@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default function Add() {
-    const url = 'https://api.chocolatpatis.shop';
+    const url = 'http://127.0.0.1:8000';
 
     const [cat, setCat] = useState([])
 
     useEffect(() => {
         // Fetch product data from the Laravel API
-        axios.get(`${url}/api/categories`)
+        axios.get(`${url}/api/category`)
             .then(response => {
                 setCat(response.data);
             })
@@ -18,13 +19,18 @@ export default function Add() {
     }, []);
 
 
+    const [nam, setNam] = useState("");
+    const [desc, setDesc] = useState("");
+    const [image, setImage] = useState(null)
+
     const [product, setProduct] = useState({
         name: '',
-        category_id: '',
+        qnt_dispo: '',
+        prix_vent: '',
+        kcal: '',
         image: null,
-        desc: '',
-        prix: 0,
-        cal: ''
+        category_id: '',
+        description: ''
     });
 
     const handleChange = (e) => {
@@ -39,13 +45,15 @@ export default function Add() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        console.log(product.category_id)
         const formData = new FormData();
         formData.append('name', product.name);
-        formData.append('prix', product.prix);
+        formData.append('qnt_dispo', product.qnt_dispo);
+        formData.append('prix_vent', product.prix_vent);
+        formData.append('kcal', product.kcal);
         formData.append('image', product.image);
-        formData.append('cal', product.cal);
-        formData.append('description', product.desc);
-        formData.append('category_id', product.category_id);
+        formData.append('categorie_id', 1);
+        formData.append('description', product.description);
 
         try {
             await axios.post(`${url}/api/products`, formData);
@@ -58,7 +66,8 @@ export default function Add() {
 
     const [category, setCategory] = useState({
         name: '',
-        image: null,
+        image: '',
+        description: ""
     });
 
     const handleChangeCategory = (e) => {
@@ -68,41 +77,82 @@ export default function Add() {
             [name]: name === 'image' ? files[0] : value,
         }));
     };
+    console.log(typeof (id))
 
 
     const handleSubmitCategory = async (e) => {
         e.preventDefault();
-
         const formData = new FormData();
+        formData.append('_method', 'PATCH');
         formData.append('name', category.name);
         formData.append('image', category.image);
-
-        try {
-            await axios.post(`${url}/api/categories`, formData);
-            console.log('category added successfully!');
-        } catch (error) {
-            console.error('Error adding category:', error);
-        }
+        formData.append('description', category.description);
+        const id = Number(1)
+        console.log(id)
+        await axios.post(`${url}/api/category/` + id, formData)
+            .then(({ data }) => {
+                Swal.fire({
+                    icon: "success",
+                    text: data.message
+                })
+            }).catch(({ response }) => {
+                if (response.status === 422) {
+                    console.log(response.data.errors)
+                } else {
+                    Swal.fire({
+                        text: response.data.message,
+                        icon: "error"
+                    })
+                }
+            })
     };
+
+
+
+    // const handleSubmitCategory = async (e) => {
+    //     e.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append('name', category.name);
+    //     formData.append('image', category.image);
+    //     formData.append('description', category.description);
+    //     await axios.post(`${url}/api/category/`, formData)
+    //         .then(({ data }) => {
+    //             Swal.fire({
+    //                 icon: "success",
+    //                 text: data.message
+    //             })
+    //         }).catch(({ response }) => {
+    //             if (response.status === 422) {
+    //                 console.log(response.data.errors)
+    //             } else {
+    //                 Swal.fire({
+    //                     text: response.data.message,
+    //                     icon: "error"
+    //                 })
+    //             }
+    //         })
+    // };
+
+
+
 
 
 
     return (
         <>
-
-
             {cat.map((item) => (
-                <p>ppppp dddddddddd{item.name}</p>
+                <p>Name{item.name}</p>
             ))}
             <div className='mt-36'>
                 <h2>Add categorie</h2>
-                <form onSubmit={handleSubmitCategory}>
-                    <label>Name:</label>
-                    <input type="text" name="name" onChange={handleChangeCategory} /> <br />
-                    {category.name}
-                    <label>Image:</label>
-                    <input type="file" name="image" onChange={handleChangeCategory} /> <br />
+                <form onSubmit={handleSubmitCategory} encType="multipart/form-data">
+                    <input type="text" name="name" value={category.name} onChange={(e) => setCategory({ ...category, name: e.target.value })} />
+                    <input type="text" name="description" value={category.description} onChange={(e) => setCategory({ ...category, description: e.target.value })} />
+                    <input type="file" name="image" onChange={(e) => setCategory({ ...category, image: e.target.files[0] })} />
 
+                    {/* <input type="text" name="nam" value={nam} onChange={(e) => setNam(e.target.value)} />
+                    <input type="text" name="desc" value={desc} onChange={(e) => setDesc(e.target.value)} />
+                    <input type="file" name="image" value={image} onChange={(e) => setImage(e.target.value)} /> */}
 
                     <button type="submit">Add categorie</button>
                 </form>
@@ -115,16 +165,25 @@ export default function Add() {
                 <form onSubmit={handleSubmit}>
                     <label>Name:</label>
                     <input type="text" name="name" onChange={handleChange} /> <br />
-                    <label>categorie:</label>
-                    <input type="text" name="category_id" onChange={handleChange} /> <br />
-                    <label>prix:</label>
-                    <input type="text" name="prix" onChange={handleChange} /> <br />
+
+                    <label>qnt_dispo:</label>
+                    <input type="text" name="qnt_dispo" onChange={handleChange} /> <br />
+
+                    <label>prix_vent:</label>
+                    <input type="text" name="prix_vent" onChange={handleChange} /> <br />
+
+                    <label>kcal:</label>
+                    <input type="number" name="kcal" onChange={handleChange} /> <br />
+
+
                     <label>Image:</label>
                     <input type="file" name="image" onChange={handleChange} /> <br />
-                    <label>desc:</label>
-                    <input type="text" name="desc" onChange={handleChange} /> <br />
-                    <label>Cal:</label>
-                    <input type="number" name="cal" onChange={handleChange} /> <br />
+
+                    <label>categorie:</label>
+                    <input type="number" name="category_id" onChange={handleChange} /> <br />
+
+                    <label>description:</label>
+                    <input type="text" name="description" onChange={handleChange} /> <br />
 
                     <button type="submit">Add Product</button>
                 </form>
