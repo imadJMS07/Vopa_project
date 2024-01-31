@@ -75,12 +75,15 @@ const Layout = () => {
     return (
 
         <>
+
+
+
             <div style={{ zIndex: 1, backgroundColor: '#fff' }} className={`shadow-lg  w-full fixed top-0 left-0   ${open ? 'duration-700 h-[470px]' : 'h-26'} `} >
                 <div className=' md:flex items-center justify-between   bg-white  md:px-10 px-7'>
                     <div className=' flex items-center '>
                         <img src={Logo} className="Logo w-24" alt="VOPA_LOGA" />
                     </div>
-                    <div onClick={() => setOpen(!open)} className='absolute right-8 top-8  cursor-pointer md:hidden w-7 h-7' >
+                    <div onClick={() => setOpen(!open)} className='absolute right-8 top-8 duration-700  cursor-pointer md:hidden w-7 h-7' >
                         {
                             open ? <XMarkIcon /> : <Bars3BottomRightIcon />
                         }

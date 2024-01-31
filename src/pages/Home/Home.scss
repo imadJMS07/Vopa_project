@@ -18,8 +18,20 @@
     }
 }
 
+@media (max-width:499px) {
+    .welcom {
+        min-height: 75vh !important;
+    }
+}
 
 
+@media (min-width:1224px) and (max-width:1279px) {
+    .chosse {
+        position: relative;
+        top: 100px !important;
+        left: 40px !important;
+    }
+}
 
 @media (max-width:639px) {
     .gridHome {
@@ -34,9 +46,9 @@
 
     }
 
-    .welcom {
-        height: 95vh;
-    }
+    // .welcom {
+    //     height: 70vh;
+    // }
 
 
 }

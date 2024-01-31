@@ -8,7 +8,7 @@ export default function Add() {
 
     useEffect(() => {
         // Fetch product data from the Laravel API
-        axios.get(`${url}/api/categories`)
+        axios.get(`${url}/api/category`)
             .then(response => {
                 setCat(response.data);
             })
@@ -76,9 +76,19 @@ export default function Add() {
         const formData = new FormData();
         formData.append('name', category.name);
         formData.append('image', category.image);
+        formData.append('description', 'category.image');
+
+        // formData.append('niveau_stock', "formik.values.niveau_stock");
+        // formData.append('mouvment_stock', "formik.values.mouvment_stock");
+        // formData.append('produit_plus_vendus', "formik.values.produit_plus_vendus");
+        // formData.append('description', "formik.values.description");
+
+
+        // formData.append('email', "mo@gmail.com");
+        // formData.append('password', "mouadben2345678");
 
         try {
-            await axios.post(`${url}/api/categories`, formData);
+            await axios.post(`${url}/api/category`, formData);
             console.log('category added successfully!');
         } catch (error) {
             console.error('Error adding category:', error);
@@ -92,7 +102,10 @@ export default function Add() {
 
 
             {cat.map((item) => (
-                <p>ppppp dddddddddd{item.name}</p>
+                <>
+                    <p>ppppp dddddddddd{item.name}</p>
+                    <img src={`${url}/storage/product/image/${item.image}`} alt="ddd" />
+                    <br /></>
             ))}
             <div className='mt-36'>
                 <h2>Add categorie</h2>
