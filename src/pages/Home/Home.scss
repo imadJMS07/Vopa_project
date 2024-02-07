@@ -20,10 +20,39 @@
 
 @media (max-width:499px) {
     .welcom {
-        min-height: 75vh !important;
+        min-height: 90vh !important;
+    }
+
+    .textKlam {
+        width: 300px !important;
     }
 }
 
+@media(max-width:390px) {
+    .welcom {
+        min-height: 100vh !important;
+    }
+}
+
+
+@media (min-width:500px) and (max-width:600px) {
+    .welcom {
+        min-height: 90vh !important;
+    }
+}
+
+
+@media (min-width:601px) and (max-width:1000px) {
+    .welcom {
+        height: 85vh !important;
+    }
+}
+
+@media (min-width:1001px) {
+    .welcom {
+        height: 83vh !important;
+    }
+}
 
 @media (min-width:1224px) and (max-width:1279px) {
     .chosse {
@@ -40,11 +69,7 @@
         margin-top: 7%;
     }
 
-    .buttonHome {
-        margin-left: 10%;
 
-
-    }
 
     // .welcom {
     //     height: 70vh;
@@ -56,7 +81,7 @@
 
 @media (max-width:550px) {
     .circle-image-pic2 {
-        max-width: 41vh !important;
+        max-width: 29vh !important;
         margin-left: 13%;
         margin-top: 50px;
     }
@@ -66,16 +91,16 @@
     .circle-image-pic2 {
         max-width: 52vh !important;
         margin-left: 13%;
-        margin-top: 55px;
+        margin-top: 95px;
     }
 }
 
 
 @media (min-width:640px) and (max-width:870px) {
     .circle-image-pic2 {
-        max-width: 34vh !important;
-        margin-left: 13%;
-        margin-top: 40px;
+        // max-width: 104vh !important;
+        margin-left: 15%;
+        margin-top: 130px;
     }
 }
 

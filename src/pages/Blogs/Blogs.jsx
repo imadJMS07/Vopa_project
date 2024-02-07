@@ -154,40 +154,42 @@ function Blogs() {
                 </div>
             </div>
 
+
+
+            <div className=" flex justify-center mt-10 xl:hidden 2xl:hidden">
+                <input type="text" className="h-11 w-[37vh] sm:w-[50vh] md:w-[90vh] outline-none p-5 border-2  " placeholder="Search Your Keword.." />
+                <button className=" h-11 w-12" style={{ background: '#195A00' }}>
+                    <i className="pi pi-search  text-white-A700" style={{ fontSize: '1rem' }}></i>
+                </button>
+            </div>
+
             <div className={`${isModalOpen ? 'opacity-75' : ''}`}>
                 <div className="container flex justify-end  ">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 space-x-10 mt-10">
+                    <div className=" grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 space-x-10 mt-10 ">
 
-                        <div className="flex flex-col space-y-20">
+                        <div className="post flex flex-col items-center mx-auto ml-0 sm:ml-0 md:ml-36 xl:ml-0  relative lg:left-[-20vh] xl:left-[0vh] space-y-20">
                             {currentPosts.map((blog, index) => (
-                                <div key={index} className="imaage flex flex-col justify-end" data-aos="zoom-up">
+                                <div key={index} className="imaage flex flex-col justify-end " data-aos="zoom-up">
 
 
-                                    <img src={blog.image} className="img3 sm:max-w-[30vh]" style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} alt="" />
-                                    {/* .img3,
-                                    .img3partetwo {
-                                        max - height: 65vh !important;
-                                    background-size: cover;
-                                    background-position: center;
-                                    background-repeat: no-repeat;
-} */}
+                                    <img src={blog.image} className="img3" style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} alt="" />
 
-                                    <div className="flex flex-row">
+                                    <div className="flex flex-row  date">
                                         <img src={Calendar} className="w-6 mt-3" alt="" />
                                         <p className="mt-3 ml-1 text-md text-gray-900 font-medium">{blog.date} /</p>
                                         <img src={Admin} className="w-6 mt-3" alt="" />
                                         <p className="mt-3 ml-1 text-md text-gray-900 font-medium">{blog.author}</p>
                                     </div>
-                                    <p className="text-3xl fon mt-2 text-gray-700 font-semibold">{blog.title}</p>
+                                    <p className="text-3xl  mt-2  title text-gray-700 font-semibold">{blog.title}</p>
                                     <hr className="mt-6" />
                                     <Text>
-                                        <p className="kalam xl:w-[600px] mt-5">{blog.content}</p>
+                                        <p className="kalam pargha w-[420px] sm:w-[600px] md:w-[600px] 2xl:w-[600px]  mx-auto   mt-5">{blog.content}</p>
                                     </Text>
                                 </div>
                             ))}
                         </div>
 
-                        <div className="hidden lg:block xl:block 2xl:block">
+                        <div className="hidden order-1 xl:block 2xl:block">
                             <div>
                                 <input type="text" className="h-11 w-[330px] outline-none p-5 border-2  " placeholder="Search Your Keword.." />
                                 <button className=" h-11 w-12" style={{ background: '#195A00' }}>
@@ -228,6 +230,7 @@ function Blogs() {
 
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -239,7 +242,6 @@ function Blogs() {
                     </div>
                 </div>
             )}
-
 
             <nav className="flex justify-center mt-20">
                 <ul className="list-style-none flex">
@@ -273,7 +275,6 @@ function Blogs() {
                     </li>
                 </ul>
             </nav>
-
 
             <br /><br />
         </>

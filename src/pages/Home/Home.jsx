@@ -35,13 +35,14 @@ import hero2 from '../../images/hero2.png'
 import hero3 from '../../images/hero3.png'
 gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
-    const url = "https://api.chocolatpatis.shop";
+    const url = "https://api.vopa.ma";
     const [category, setCategory] = useState([]);
     const [last, setLast] = useState([]);
 
     useEffect(() => {
-        axios.get(`${url}/api/category`)
+        axios.get(`${url}/api/categories`)
             .then(response => {
+                console.log(response.data)
                 setCategory(response.data);
             })
             .catch(error => {
@@ -113,40 +114,47 @@ export default function Home() {
     return (
         <>
 
+            {/* <div className='container'> */}
+            <div className="mt-24 mb-96 gridHome flex flex-col-reverse">
+                <div className=' grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2  gap-4'>
 
-
-            {/* <div className="mt-24 mb-96 gridHome flex flex-col-reverse">
-                <div className=' grid grid-cols-1 sm:grid-cols-2 gap-4'>
-
-                    <div className='space-y-5 order-2 relative xl:left-36 xl:top-20 '>
+                    <div className='space-y-5 relative top-80 mt-16 sm:mt-48 md:mt-60 md:ml-48 lg:ml-0 xl:ml-0 2xl:ml-0 lg:mt-0  xl:mt-0 2xl:mt-0 ml-5  order-2 md:order-2  lg:order-1 xl:order-1 2xl:order-1   lg:left-10 lg:top-10 xl:left-16 xl:top-12 2xl:left-36 2xl:top-20 '>
                         <p className='miniver' style={{}}>
                             Healthy & Testy Food <hr className='ml-6 w-9 inline-block' />
                         </p>
-                        <p className='inter text-6xl  opacity-[0.7]' >
+                        <p className='inter text-6xl  sm:text-6xl md:text-6xl lg:text-4xl xl:text-6xl 2xl:text-6xl opacity-[0.7]' >
                             Enjoy Healthy Life <br /> & Testy Food. <img src={Stars} className='inline-block' alt="" />
                         </p>
-                        <p className='kalam'>
+                        <p className='kalam w-[350px]'>
                             Indulge in a life of wellness with the perfect fusion of health and tasty delights. <br /> Enjoy a healthy life and delicious food, making every moment a celebration of well-being
                         </p>
 
-                        <div className='buttonHome flex flex-row gap-5'>
-                            <button type="button" className=" kalamButton w-44  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 hover:shadow-2xl duration-700 hover:duration-700">Show More</button>
-                            <button type="button" className="kalam border-green-800 border-[1.5px] text-green-800 w-44  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md  hover:shadow-2xl duration-700 hover:duration-700">Reserve Now</button>
+                        <div className='buttonHome flex flex-row  gap-5'>
+                            <button type="button" className=" kalamButton w-44  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 hover:shadow-2xl duration-700 hover:duration-700">
+                                <a href="https://info-vopa.com/">
+
+                                    Show More
+                                </a>
+
+                            </button>
+                            <button type="button" className="kalam border-green-800 border-[1.5px] text-green-800 w-44  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md  hover:shadow-2xl duration-700 hover:duration-700">
+                                <Link to='/reservastion'>Reserve Now</Link>
+                            </button>
 
                         </div>
                     </div>
 
-                    <div className="relative order-1">
-                        <img src={Bg} alt="" className="absolute inset-0  object-cover " />
-                        <img src={Pic_2} className='circle-image-pic2 w-[30vh] xl:max-w-[60vh] xl:ml-32 xl:mt-28 absolute top-0 left-0 ' alt="" />
+                    <div className="relative order-1  ml-0  sm:ml-0 md:ml-36 lg:ml-0 xl:ml-0">
+                        <img src={Bg} alt="" className="absolute inset-0  object-cover md:min-w-[60vh]" />
+                        <img src={Pic_2} className='circle-image-pic2 w-[300px] md:w-[50vh] md:mt-44  lg:w-[55vh] xl:w-[50vh] 2xl:w-[60vh] xl:ml-28 xl:mt-24 2xl:max-w-[60vh] 2xl:ml-28 2xl:mt-24 absolute top-0 left-0 ' alt="" />
                     </div>
 
                 </div>
-            </div> */}
+            </div>
 
 
             <div
-                className='welcom min-h-[80vh]'
+                className='welcom '
                 style={{
                     backgroundImage: `url(${bgWelcome})`,
                     backgroundSize: "cover",
@@ -160,7 +168,7 @@ export default function Home() {
                             <p className='miniver text-6xl mt-32 flex justify-center '>Welcome</p>
 
                             <Text>
-                                <p className='kalam text-[25px]  md:text-2xl lg:text-2xl xl:text-2xl 2xl:text-2xl mt-6'>Discover healthy and delicious cuisine at VOPA in Tangier, favoring freshness and diversity. Our balanced menu offers unique dishes for all tastes. With quality ingredients, our passionate team guarantees you an exceptional culinary experience, combining health and pleasure. Join us in redefining your diet at VOPA.</p>
+                                <p className='kalam textKlam text-[25px] w-[450px] sm:w-[500px] md:w-[500px] lg:w-[1000px] xl:w-[1000px] 2xl:w-[1300px]  md:text-2xl lg:text-2xl xl:text-2xl 2xl:text-2xl mt-6'>Discover healthy and delicious cuisine at VOPA in Tangier, favoring freshness and diversity. Our balanced menu offers unique dishes for all tastes. With quality ingredients, our passionate team guarantees you an exceptional culinary experience, combining health and pleasure. Join us in redefining your diet at VOPA.</p>
                             </Text>
                             <div className="flex justify-center mt-12">
                                 <button type="button" className=" kalamButton w-44  h-11  text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 ">Show More</button>
@@ -179,7 +187,7 @@ export default function Home() {
                                 <img src={image3} alt="" data-aos="fade-up" className="max-w-[40vh] md:max-w-[45vh] md:min-h-[60vh] lg:max-w-[45vh] lg:min-h-[60vh] xl:max-w-[40vh] xl:min-h-[40vh] 2xl:max-w-[40vh] 2xl:min-h-[40vh] bg-cover md:ml-[100px] lg:ml-[15px] xl:ml-[5px] 2xl:ml-[100px] mt-4 md:mt-16 lg:mt-0 hidden xl:block 2xl:block min-h-[65vh]" />
                             </div>
                             <div className='space-y-5 flex flex-col justify-center items-center xl:mt-16 2xl:mt-16 '>
-                                <img src={image2} alt="" className="hidden xl:block 2xl:block max-w-[40vh] min-h-[40vh] lg:max-w-[43vh] lg:min-h-[60vh] xl:max-w-[40vh] xl:min-h-[40vh] 2xl:max-w-[40vh] 2xl:min-h-[40vh] bg-cover " style={{ backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} data-aos="fade-left" />
+                                <img src={image2} alt="" className="hidden xl:block 2xl:block max-w-[40vh] min-h-[40vh] lg:max-w-[43vh] lg:min-h-[60vh] xl:max-w-[40vh] xl:min-h-[40vh] 2xl:max-w-[40vh] 2xl:min-h-[40vh] bg-cover " style={{ backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} data-aos="fade-up" />
                                 <img src={image4} alt="" className="max-w-[40vh] min-h-[40vh] md:max-w-[45vh] md:min-h-[60vh] lg:max-w-[43vh] lg:min-h-[60vh] xl:max-w-[40vh] xl:min-h-[40vh] 2xl:max-w-[40vh] 2xl:min-h-[40vh] lg:mr-36 xl:mr-0 2xl:mr-0 bg-cover " style={{ backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} data-aos="fade-up" />
                             </div>
                         </div>
@@ -190,7 +198,7 @@ export default function Home() {
                                 <h6 className="inter text-4xl" ><span className='' style={{ color: '#195A00' }}>Food </span><span className='relative '>is an important</span></h6>
                                 <h6 className="inter text-4xl" ><span className='' style={{ color: '#195A00' }}>part of a balanced  </span><span className='relative '>Diet</span></h6>
                                 <Text>
-                                    <p className="kalam w-[400px] md:w-[600px] lg:w-[600px] xl:w-[600px] 2xl:w-[600px] mt-5 text-[20px]"  >Maintaining a well-balanced diet is not only paramount for optimal physical health, as it furnishes the body with indispensable nutrients vital for the seamless functioning of bodily processes, but it also transcends mere physiological advantages. Food encapsulates a rich tapestry of cultural and social significance, weaving together diverse traditions, customs, and communal bonds. Beyond the realm of sustenance, it becomes a conduit for shared experiences, fostering connections and contributing significantly to the cultivation of a harmonious and gratifying lifestyle.</p>
+                                    <p className="kalam w-[365px] mx-auto md:w-[600px] lg:w-[600px] xl:w-[600px] 2xl:w-[600px] mt-5 text-[20px]"  >Maintaining a well-balanced diet is not only paramount for optimal physical health, as it furnishes the body with indispensable nutrients vital for the seamless functioning of bodily processes, but it also transcends mere physiological advantages. Food encapsulates a rich tapestry of cultural and social significance, weaving together diverse traditions, customs, and communal bonds. Beyond the realm of sustenance, it becomes a conduit for shared experiences, fostering connections and contributing significantly to the cultivation of a harmonious and gratifying lifestyle.</p>
                                 </Text>
                             </React.Fragment>
                         </div>
@@ -201,10 +209,8 @@ export default function Home() {
             <div className="flex  flex-col items-center  mx-auto mt-32" data-aos="fade-up">
                 <p className='flex justify-center text-5xl miniver '  >Food Catagory</p>
                 <Text>
-                    <p className='flex justify-center  w-96 md:w-[100vh] lg:w-[130vh] xl:w-[160vh] 2xl:w-[160vh] kalam mt-5 text-xl text-center'>In the realm of cuisine, 'Food Category' helps classify and organize diverse foods based on shared characteristics.  <br className='hidden lg:block xl:block 2xl:block' /> Whether it's fruits,  vegetables, dairy, or meats, this concept simplifies navigating <br className='hidden lg:block xl:block 2xl:block' /> the rich world of flavors and textures.</p>
-
+                    <p className='flex justify-center  w-[269px] md:w-[100vh] lg:w-[130vh] xl:w-[160vh] 2xl:w-[160vh] kalam mt-5 text-xl text-center'>In the realm of cuisine, 'Food Category' helps classify and organize diverse foods based on shared characteristics.  <br className='hidden lg:block xl:block 2xl:block' /> Whether it's fruits,  vegetables, dairy, or meats, this concept simplifies navigating <br className='hidden lg:block xl:block 2xl:block' /> the rich world of flavors and textures.</p>
                 </Text>
-
             </div >
 
             <div className='w-3/4 m-auto'>
@@ -237,36 +243,33 @@ export default function Home() {
 
                     <div data-aos="fade-up" className='flex justify-center items-center flex-col  '>
                         <div>
-                            <img src={Chaf} alt="" className='max-w-[50vh]' />
+                            <img src={Chaf} alt="" className='max-w-[46vh]' />
                             <img src={imm2} className=' hidden lg:block xl:block 2xl:block relative max-w-[45vh md:max-w-[75vh] left-44 top-[-53vh] lg:left-20 xl:left-44 2xl:left-44' alt="" />
-                        </div>
+                        </div >
 
-                    </div>
+                    </div >
 
-                    <div data-aos="fade-up" className='chosse relative mx-auto  mt-5   xl:mt-20 ml-7 md:ml-0 md:left-[25vh] md:top-[0vh] lg:top-[-50vh] lg:left-[45vh] xl:top-[0vh] xl:left-[7vh]'>
+                    <div className='chosse relative mx-auto  mt-5   xl:mt-20 ml-7 md:ml-0 md:left-[25vh] md:top-[0vh] lg:top-[-0vh] lg:left-[10vh] xl:top-[0vh] xl:left-[7vh]'>
                         <h1 className="miniver text-2xl" >Why choose us <hr className='miniver inline-block w-20 h-1' /> </h1>
                         <h6 className="inter text-4xl" ><span className='t' style={{ color: '#195A00' }}>Why </span><span className='relative '>We are the best?</span></h6>
                         <Text>
-                            <p className="kalam w-full md:w-[70vh] lg:w-[70vh]  mt-5" style={{ fontSize: '20px' }} >Choose us because we stand out as the best. Our commitment to excellence,unparalleled quality,and customer satisfaction make us a top choice. With a track record of delivering exceptional results ,we prioritize your needs, ensuring an experience  that goes beyond expectations.</p>
+                            <p className="kalam w-[335px] md:w-[70vh] lg:w-[70vh]  mt-5" style={{ fontSize: '20px' }} >Choose us because we stand out as the best. Our commitment to excellence,unparalleled quality,and customer satisfaction make us a top choice. With a track record of delivering exceptional results ,we prioritize your needs, ensuring an experience  that goes beyond expectations.</p>
                         </Text>
-                        <div className='flex flex-row justify-start md:justify-start gap-4 mt-7' >
-                            <button className='kalam w-52 md:w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} > <img src={Truck} className='w-10 ml-6 mt-1' alt="" /> <span className='relative top-[-30px] left-4 md:left-2 '>Fast delivery</span> </button>
-                            <button className='kalam w-52 md:w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} ><img src={Timer} className='w-10 ml-6 mt-1' alt="" /> <span className='relative top-[-30px] left-4 md:left-2'> 24/7 services</span>  </button>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-6">
+                            <button className='kalam w-80 sm:w-80 md:w-80 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} > <img src={Truck} className='w-10  mt-1' alt="" /> <span className='relative top-[-30px]  md:left-2 '>Fast delivery</span> </button>
+                            <button className='kalam w-80 md:w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} ><img src={Timer} className='w-10  mt-1' alt="" /> <span className='relative top-[-30px]  md:left-2'> 24/7 services</span>  </button>
+                            <button className='kalam w-80 md:w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} ><img src={Hamburger} className='w-10  mt-1' alt="" /><span className='relative top-[-30px] lmd:left-2'>Fresh food</span> </button>
+                            <button className='kalam w-80 md:w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} ><img src={Factory} className='w-10  mt-1' alt="" /> <span className='relative top-[-30px]  md:left-5'>Qualiti maintain</span> </button>
                         </div>
 
-                        <div className='flex flex-row justify-start md:justify-start gap-4 mt-3' >
-                            <button className='kalam w-52 md:w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} ><img src={Hamburger} className='w-10 ml-6 mt-1' alt="" /><span className='relative top-[-30px] left-4 md:left-2'>Fresh food</span> </button>
-                            <button className='kalam w-52 md:w-60 h-14 rounded-md text-xl  shadow-lg ' style={{ color: "#195A00" }} ><img src={Factory} className='w-10 ml-6 mt-1' alt="" /> <span className='relative top-[-30px] left-7 md:left-5'>Qualiti maintain</span> </button>
-                        </div>
-
-                    </div>
+                    </div >
 
                     <img src={hero1} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-500px] left-[100px]' />
                     <img src={hero2} alt="" className='hidden xl:block 2xl:block circle-image relative top-[-430px] right-[-100px] ' />
                 </div >
             </div >
 
-            <div className="container mx-auto mb-10 md:mt-20 mt-[50px] lg:mt-[-300px] xl:mt-[-300px] 2xl:mt-[-180px]" >
+            <div div className="container mx-auto mb-10 md:mt-20 mt-[50px] lg:mt-[-300px] xl:mt-[-300px] 2xl:mt-[-180px]" >
                 <div className="flex justify-center">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 xl:gap-9">
                         <div data-aos="zoom-up" className="2xl:order-2 xl:order-2  md:order-1 lg:order-2 ">
@@ -278,7 +281,7 @@ export default function Home() {
                                 <h6 className=" inter text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-6xl ml-2.5 sm:ml-5 md:ml-0 lg:ml-0 xl:ml-0 2xl:ml-0"><span className='t'>Customer Review</span></h6>
                                 <img src={Quotes} alt="" className='ml-2.5 sm:ml-5 md:ml-0 lg:ml-0 xl:ml-0 2xl:ml-0' />
                                 <Text>
-                                    <p className="mx-auto kalam mt-3 w-[420px] sm:w-[600px] md:w-[610px] lg:w-[550px] xl:w-[610px] 2xl:w-[600px]" style={{ fontSize: '20px' }}>
+                                    <p className="mx-auto kalam mt-3 w-[370px] sm:w-[600px] md:w-[610px] lg:w-[550px] xl:w-[610px] 2xl:w-[600px]" style={{ fontSize: '20px' }}>
                                         At <span>Voopa Food</span>, healthy dining is an art form. Their menu, filled with vibrant and locally-sourced ingredients, transforms each meal into a flavorful and nourishing delight. From colorful salads to protein-packed entrees, every bite at <span>Voopa Food</span> is a celebration of well-being. A must-try for those who appreciate a perfect balance of taste and health!
                                     </p>
                                 </Text>
@@ -288,7 +291,10 @@ export default function Home() {
                 </div>
                 <img src={hero1} alt="" className='hidden xl:block 2xl:block circle-image relative top-[70px] left-[00px]' />
                 <img src={hero3} alt="" className='hidden xl:block 2xl:block circle-image ml-11 relative top-[-340px]' />
-            </div>
+            </div >
+            {/* </div > */}
+
+
 
         </>
     )

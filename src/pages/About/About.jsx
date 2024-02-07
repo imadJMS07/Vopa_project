@@ -27,9 +27,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
     const { teams, clients, values, vision, person, student, coffee } = data
-    // useEffect(() => {
-    //     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // }, []);
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
 
     useEffect(() => {
         Aos.init({ duration: 3000 });
@@ -58,7 +58,7 @@ export default function About() {
                     <p className="  about font-bold  text-8xl md:text-9xl ">About Us </p>
                 </div>
                 <img src={hero1} alt="" className='circle-image ml-11' data-aos="fade-right" />
-                <img src={hero2} alt="" className='circle-image ml-96 mt-10' data-aos="fade-left" />
+                <img src={hero2} alt="" className='circle-image mt-10' data-aos="fade-left" />
 
                 <div className='flex justify-end mr-11' data-aos="fade-right">
 
@@ -87,7 +87,7 @@ export default function About() {
                                 <h6 className="inter text-4xl" ><span className='' style={{ color: '#195A00' }}>Food </span><span className='relative '>is an important</span></h6>
                                 <h6 className="inter text-4xl" ><span className='' style={{ color: '#195A00' }}>part of a balanced  </span><span className='relative '>Diet</span></h6>
                                 <Text>
-                                    <p className="kalam w-[400px] md:w-[600px] lg:w-[600px] xl:w-[600px] 2xl:w-[600px] mt-5 text-[20px]"  >Maintaining a well-balanced diet is not only paramount for optimal physical health, as it furnishes the body with indispensable nutrients vital for the seamless functioning of bodily processes, but it also transcends mere physiological advantages. Food encapsulates a rich tapestry of cultural and social significance, weaving together diverse traditions, customs, and communal bonds. Beyond the realm of sustenance, it becomes a conduit for shared experiences, fostering connections and contributing significantly to the cultivation of a harmonious and gratifying lifestyle.</p>
+                                    <p className="kalam w-[385px] md:w-[600px] lg:w-[600px] xl:w-[600px] 2xl:w-[600px] mt-5 text-[20px]"  >Maintaining a well-balanced diet is not only paramount for optimal physical health, as it furnishes the body with indispensable nutrients vital for the seamless functioning of bodily processes, but it also transcends mere physiological advantages. Food encapsulates a rich tapestry of cultural and social significance, weaving together diverse traditions, customs, and communal bonds. Beyond the realm of sustenance, it becomes a conduit for shared experiences, fostering connections and contributing significantly to the cultivation of a harmonious and gratifying lifestyle.</p>
                                 </Text>
                             </React.Fragment>
                         </div>
@@ -117,7 +117,7 @@ export default function About() {
                                     <h6 className="inter text-4xl" style={{ color: '#195A00' }}>{item.grand2}</h6>
                                     <h6 className="inter text-4xl" >{item.grand3}<span className='tracking-tight relative right-2' style={{ color: '#195A00' }}>{item.let2}</span></h6>
                                     <Text>
-                                        <p className="kalam w-[400px] md:w-[600px] lg:w-[600px] xl:w-[600px] 2xl:w-[600px] mt-5 text-[20px]"  >{item.pharagraph1}{item.pharagraph2}{item.pharagraph3}{item.pharagraph4}{item.pharagraph5}</p>
+                                        <p className="kalam w-[350px] md:w-[600px] lg:w-[600px] xl:w-[600px] 2xl:w-[600px] mt-5 text-[20px]"  >{item.pharagraph1}{item.pharagraph2}{item.pharagraph3}{item.pharagraph4}{item.pharagraph5}</p>
                                     </Text>
                                 </React.Fragment>
                             ))}
@@ -159,11 +159,11 @@ export default function About() {
                             <Text>
                                 <p className="text-lg mx-auto text-gray-500 relative top-3  w-[340px] kalam">{person.pargha}</p>
                             </Text>
-                        </div>
-                    </div>
-                </div>
+                        </div >
+                    </div >
+                </div >
 
-            </div>
+            </div >
 
             {/* </div> */}
             <br /><br /><br /><br /><br />

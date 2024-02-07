@@ -97,10 +97,10 @@ export default function Contact() {
         <>
             <div className="bg-cover bg-center mt-[100px] bg-image">
                 <div className="grid justify-items-center relative top-24 ">
-                    <p className="  about font-bold  text-9xl sm:text-1xl ">Contact </p>
+                    <p className="  about font-bold  text-8xl sm:text-9xl ">Contact </p>
                 </div>
                 <img src={hero1} alt="" className='circle-image ml-11' data-aos="fade-up" />
-                <img src={hero2} alt="" className='circle-image ml-96 mt-10' data-aos="fade-up" />
+                <img src={hero2} alt="" className='circle-image  mt-10' data-aos="fade-up" />
                 <div className='flex justify-end mr-11' data-aos="fade-up">
                     <img src={hero2} alt="" className='circle-image ' data-aos="fade-up" />
                     <img src={hero3} alt="" className='circle-image ml-11' data-aos="fade-up" />
@@ -111,6 +111,7 @@ export default function Contact() {
 
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 space-x-12   ">
+
                 <div className="flex flex-col justify-center items-center text-center">
                     <div className="container ">
                         <div className=" grid grid-cols-1 gap-4 w-96 md:w-[480px] mt-10 ml-auto mr-auto bg-slate-50 rounded-sm shadow-xl p-6 xl:ml-[280px]">
@@ -172,16 +173,14 @@ export default function Contact() {
 
             </div >
 
-            <div div class="container mr-auto ml-auto mt-36 flex justify-center " >
+            {/* <div div class="container mr-auto ml-auto mt-36 flex justify-center " >
                 <div className="mr-auto ml-auto grid grid-cols-1 md:grid-cols-3 gap-3 space-x-2 mt-20  ">
-
                     <div className='w-[380px]  h-[300px]  pt-12 flex justify-center items-center flex-col hover:bg-green-100  border-green-600 border-[0.5px] transition ease-in-out delay-150 xl:hover:-translate-y-1 xl:hover:scale-110  duration-700' data-aos="fade-up">
-                        {/* " bg-blue-500 hover:bg-indigo-500 */}
                         <p className='kalam text-3xl relative bottom-14'>{card.phone}</p>
                         <i className="pi pi-phone  relative bottom-2" style={{ fontSize: '60px', color: '#195A00' }}></i>
                         <p>+212 7 62 18 15 92</p>
                         <p>+212 7 62 18 15 92</p>
-                    </div>
+                    </div >
 
                     <div className='w-[380px]  h-[300px]  pt-12 flex justify-center items-center flex-col hover:bg-green-100  border-green-600 border-[0.5px] transition ease-in-out delay-150 xl:hover:-translate-y-1 xl:hover:scale-110  duration-700' data-aos="fade-up">
                         <p className='kalam text-3xl relative bottom-14'>{card.email}</p>
@@ -197,13 +196,11 @@ export default function Contact() {
                         <p>New York, 15668, USA</p>
                     </div>
 
-                </div>
+                </div >
             </div >
 
 
-            <div div class="container mr-auto ml-auto mt-36 flex justify-center " >
-
-
+            <div div class="container mr-auto mb-96 sm:mb-0 ml-auto mt-36 flex justify-center " >
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4086.0604600007455!2d-5.804263272649879!3d35.77978008465752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0c7f598a3e10bd%3A0x772a4b96165ba92d!2sTanja%20Marina%20Bay!5e0!3m2!1sen!2sma!4v1702382170564!5m2!1sen!2sma"
                     width="1000"
                     height="600"
@@ -228,7 +225,7 @@ export default function Contact() {
                 <img src={hero2} alt="" className='circle-image hidden xl:block lg:block 2xl:block relative top-[-100px] left-[90%]' data-aos="fade-left " />
                 <img src={hero3} alt="" className='circle-image hidden xl:block lg:block 2xl:block relative top-[-180px] left-4' data-aos="fade-left " />
 
-            </div>
+            </div> */}
 
 
 

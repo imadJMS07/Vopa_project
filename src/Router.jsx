@@ -65,6 +65,7 @@ const Bars = () => {
             <div style={{ animationDelay: "0.2s" }} />
             <div style={{ animationDelay: "0.3s" }} />
             <div style={{ animationDelay: "0.4s" }} />
+
         </div>
     );
 };
@@ -76,9 +77,7 @@ const Layout = () => {
 
         <>
 
-
-
-            <div style={{ zIndex: 1, backgroundColor: '#fff' }} className={`shadow-lg  w-full fixed top-0 left-0   ${open ? 'duration-700 h-[470px]' : 'h-26'} `} >
+            <div style={{ zIndex: 1, backgroundColor: '#fff' }} className={`shadow-lg  w-full fixed top-0 left-0    ${open ? ' h-[470px] 2xl:h-24 xl:h-24 lg:h-24 md:h-24' : 'h-24'} `} >
                 <div className=' md:flex items-center justify-between   bg-white  md:px-10 px-7'>
                     <div className=' flex items-center '>
                         <img src={Logo} className="Logo w-24" alt="VOPA_LOGA" />
@@ -88,22 +87,31 @@ const Layout = () => {
                             open ? <XMarkIcon /> : <Bars3BottomRightIcon />
                         }
                     </div>
-                    <ul className={`2xl:mr-28  md:flex md:items-center md:pb-0 pb-12  absolute  md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-15' : 'top-[-490px]'} `}>
-
+                    <ul className={`2xl:mr-28  md:flex md:items-center md:pb-0 pb-12  absolute  md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9   ${open ? 'top-15' : 'top-[-490px]'} `}>
                         <li className='md:ml-8 md:my-0 my-7 font-semibold'>
-                            <Link to="/" className=' text-gray duration-500'>HOME</Link>
+                            <button>
+                                <Link to="/" className=' text-gray duration-500'>HOME</Link>
+                            </button>
                         </li>
                         <li className='md:ml-8 md:my-0 my-7 font-semibold'>
-                            <Link to="/about" className=' duration-500'>ABOUT</Link>
+                            <button>
+                                <Link to="/about" className=' duration-500'>ABOUT</Link>
+                            </button>
                         </li>
                         <li className='md:ml-8 md:my-0 my-7 font-semibold' >
-                            <Link to="/menu" className=' duration-500' >MENU</Link>
+                            <button>
+                                <Link to="/menu" className=' duration-500' >MENU</Link>
+                            </button>
                         </li>
                         <li className='md:ml-8 md:my-0 my-7 font-semibold'>
-                            <Link to="/reservastion" className=' duration-500'>RESERVATION</Link>
+                            <button>
+                                <Link to="/reservastion" className=' duration-500'>RESERVATION</Link>
+                            </button>
                         </li>
                         <li className='md:ml-8 md:my-0 my-7 font-semibold'>
-                            <Link to="/blog" className=' duration-500'>BLOG</Link>
+                            <button>
+                                <Link to="/blog" className=' duration-500'>BLOG</Link>
+                            </button>
                         </li>
 
                         <li className='md:ml-8 md:my-0 my-7 font-semibold'>
@@ -113,11 +121,26 @@ const Layout = () => {
 
                         </li>
 
-
-
                     </ul>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <Bars />
             <Outlet />
             <Footer />
@@ -140,9 +163,7 @@ const Routerr = () => {
                     <Route path="/menu/:id" element={<MenuByCat />} />
                     <Route path="/panier" element={<Panier />} />
                     <Route path="/details/:id" element={<Single />} />
-
                     <Route path="/add" element={<Add />} />
-
                 </Route>
             </Routes>
         </Provider>

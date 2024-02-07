@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { getProductByCategory } from '../../../Api/Menu';
+import { getProductByCategory, orderByDate, orderProductsCheapestToMostExpensive, orderProductsMostExpensiveToCheapest } from '../../../Api/Menu';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPanierAction } from '../../Redux/PanieActions'
 // import { clearLocalStorage } from '../../Redux/PanieRreducers';
 import Aos from 'aos';
-
 
 const Pagination = ({ pageCount, currentPage, onPageChange }) => {
     const hasPreviousPage = currentPage > 0;
@@ -59,12 +58,16 @@ const Pagination = ({ pageCount, currentPage, onPageChange }) => {
     );
 };
 const MenuByCat = () => {
-    const url = 'https://api.chocolatpatis.shop';
+    const url = 'https://api.vopa.ma';
     const Navigate = useNavigate()
     const dispatch = useDispatch();
     const [tableID, setTableID] = useState([]);
     const { id } = useParams();
     const [products, setProducts] = useState([]);
+    const [date, setDate] = useState([]);
+    const [priceCheapest, setPriceCheapest] = useState([]);
+    const [priceExpensive, setPriceExpensive] = useState([]);
+
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 9;
     const selectedPanier = useSelector((state) => state.paniers.Paniers);
@@ -75,7 +78,7 @@ const MenuByCat = () => {
         const fetchData = async () => {
             try {
                 const result = await getProductByCategory(Number(id));
-
+                console.log(result)
                 if (Array.isArray(result?.products)) {
                     setProducts(result.products);
                 } else {
@@ -89,8 +92,82 @@ const MenuByCat = () => {
         fetchData();
     }, [id]);
 
-    const pageCount = Math.ceil(products.length / itemsPerPage);
-    const visibleProducts = products.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await orderByDate(Number(id));
+                console.log(result)
+                if (Array.isArray(result?.products)) {
+                    setDate(result.products);
+                } else {
+                    console.error('Invalid response format:', result);
+                }
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await orderProductsCheapestToMostExpensive(Number(id));
+                console.log(result)
+                if (Array.isArray(result?.products)) {
+                    setPriceCheapest(result.products);
+                } else {
+                    console.error('Invalid response format:', result);
+                }
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await orderProductsMostExpensiveToCheapest(Number(id));
+                console.log(result)
+                if (Array.isArray(result?.products)) {
+                    setPriceExpensive(result.products);
+                } else {
+                    console.error('Invalid response format:', result);
+                }
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+
+
+    const [filter, setFIlter] = useState("");
+    let pageCount;
+    let visibleProducts;
+    if (filter === "") {
+        pageCount = Math.ceil(products.length / itemsPerPage);
+        visibleProducts = products.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    }
+    if (filter === "orderByDate") {
+        pageCount = Math.ceil(date.length / itemsPerPage);
+        visibleProducts = date.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    }
+    if (filter === "orderProductsCheapestToMostExpensive") {
+        pageCount = Math.ceil(priceCheapest.length / itemsPerPage);
+        visibleProducts = priceCheapest.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    }
+    if (filter === "orderProductsMostExpensiveToCheapest") {
+        pageCount = Math.ceil(priceExpensive.length / itemsPerPage);
+        visibleProducts = priceExpensive.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    }
+
 
 
     const handleSubmit = (item) => {
@@ -116,12 +193,26 @@ const MenuByCat = () => {
     });
     return (
         <>
-            {/* {tableID.map(item)} */}
-            <div className="container flex justify-center mt-36">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div className='flex flex-row mt-36 w-[45vh]  sm:w-[80vh] md:w-[100vh] lg:w-[100vh] xl:w-[80vh] 2xl:w-[80vh]  mx-auto'>
+
+                <select id="" onChange={(e) => setFIlter(e.target.value)} class="bg-gray-50 focus:border-0 border border-gray-300  text-sm rounded-lg   block w-full p-2.5 0  dark:text-white hover:none  "  >
+                    <option selected value="">Choose filter</option>
+                    <option value="orderByDate">Newest</option>
+                    <option value="orderProductsCheapestToMostExpensive">Price : Low to High</option>
+                    <option value="orderProductsMostExpensiveToCheapest">Price : High to Low</option>
+                </select>
+
+            </div>
+
+            <div className="container flex justify-center mt-20">
+
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-8">
+
+
                     {visibleProducts.map((item, index) => (
 
-                        <div key={index} className="w-full md:w-80 bg-white shadow rounded mt-2 mb-12 hover:shadow-2xl hover:duration-700"
+                        <div key={index} className="w-[43vh] md:w-80 bg-white shadow rounded mt-2 mb-12 hover:shadow-2xl hover:duration-700"
                             data-aos="zoom-up"
                         >
                             <div
@@ -141,7 +232,7 @@ const MenuByCat = () => {
                                 {/* <p onClick={() => { Navigate(`/details/${item.id}`) }} className="text-gray-400 font-light text-xs text-center">{item.category}</p> */}
                                 <h1 onClick={() => { Navigate(`/details/${item.id}`) }} className="text-gray-800 text-center mt-1 kalam">{item.name}</h1>
                                 <p onClick={() => { Navigate(`/details/${item.id}`) }} className="text-center text-gray-800 mt-1 kalam">{`${item.prix}`} MAD</p>
-                                <button id={id.item} value={id.item} className="py-2 px-4 bg-green-800 text-white rounded hover:bg-green-600 active:bg-green-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center"
+                                <button id={id.item} value={id.item} className="kalam py-2 px-4 bg-green-800 text-white-A700 rounded hover:bg-green-600  active:bg-green-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center"
                                     onClick={() => handleSubmit(item)}
 
                                 >

@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import hero1 from '../../../images/hero1.png';
 import hero2 from '../../../images/hero2.png';
 import hero3 from '../../../images/hero3.png';
-
+import './Single.scss'
 const Single = () => {
-    const url = 'https://api.chocolatpatis.shop';
+    const url = 'https://api.vopa.ma';
     const selectedPanier = useSelector((state) => state.paniers.Paniers);
     const count = selectedPanier.length;
     const Navigate = useNavigate()
@@ -98,13 +98,13 @@ const Single = () => {
             });
     }, [id]);
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, [id]);
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // }, [id]);
 
     return (
         <>
-            <div className="bg-cover bg-center mt-[100px] bg-image">
+            {/* <div className="bg-cover bg-center mt-[100px] bg-image">
                 <div className="grid justify-items-center relative top-24 ">
                     <p className="  about font-bold  text-9xl sm:text-1xl ">Details</p>
                 </div>
@@ -114,7 +114,7 @@ const Single = () => {
                     <img src={hero2} alt="" className='circle-image ' data-aos="fade-right" />
                     <img src={hero3} alt="" className='circle-image ml-11' data-aos="fade-left" />
                 </div>
-            </div>
+            </div> */}
 
             <div className="container flex justify-center mt-36 mb-14">
                 <div className="grid sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-2">
@@ -122,23 +122,24 @@ const Single = () => {
                         <img
                             src={`${url}/storage/product/image/${product.image}`}
                             alt=""
-                            className='rounded-xl max-w-[55vh] max-h-[900vh]'
+                            className='rounded-xl  singleimage mx-auto max-w-[55vh] max-h-[900vh] xl:ml-[200px] 2xl:ml-[300px]'
                             onClick={() => { setIsModalOpen(true) }}
                             data-aos="fade-right"
                         />
                     </div>
-                    <div className='mt-8 w-[100%]' data-aos="fade-left">
-                        <p className='text-3xl kalam' style={{ color: '#195A00' }}>{categorie.category_name}</p>
-                        <p className='w-[470px] text-3xl font-extrabold mt-2'>{product.name}</p>
-                        <p className='w-[470px] font-sans inter mt-6 opacity-[0.5]' style={{}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis nesciunt placeat corporis inventore odio laudantium neque. Natus velit fuga, at corporis quia reprehenderit obcaecati doloremque</p>
-                        <p className='text-2xl font-extrabold mt-4' style={{ color: '#195A00' }}>{product.prix} MAD</p>
+                    <div className='mt-8  flex  flex-col items-center sm:block ' data-aos="fade-left">
+                        <p className='text-3xl kalam relative ' style={{ color: '#195A00' }}>{categorie.category_name}</p>
+
+                        <p className=' text-3xl font-extrabold mt-2 name'>{product.name}</p>
+                        <p className=' font-sans inter mt-6 opacity-[0.5] mx-auto parghaS' style={{}}>{product.description}</p>
+                        <p className='text-2xl  font-extrabold mt-4' style={{ color: '#195A00' }}>{product.prix} MAD</p>
                         <div className='flex'>
                             <div className="bg-gray-100 rounded-lg h-14 mt-3 flex items-center justify-between px-6 lg:px-3 font-bold sm:mr-3 lg:mr-5 lg:w-1/3">
                                 <button className="text-orange text-2xl leading-none font-bold mb-1 lg:mb-2 lg:text-3xl hover:opacity-60" onClick={() => setQnt(qnt - 1)}>-</button>
                                 <input min={0} max={100} onChange={(e) => setQnt(e.target.value)} value={qnt} className="quantity focus:outline-none text-dark-blue bg-gray-100 font-bold flex text-center w-full ml-2" type="number" name="quantity" aria-label="quantity number" />
-                                <button className="text-orange text-2xl leading-none font-bold mb-1 lg:mb-2 lg:text-3xl hover:opacity-60" onClick={() => setQnt(qnt + 1)}>+</button>
+                                <button className="text-orange text-2xl leading-none font-bold mb-1 lg:mb-2 lg:text-3xl hover:opacity-60 " onClick={() => setQnt(qnt + 1)}>+</button>
                             </div>
-                            <button className="shadow-xl duration-500 py-2 px-4 w-3/6 bg-green-700 text-white rounded hover:bg-green-800 active:bg-green-700 disabled:opacity-50 mt-4 flex items-center justify-center"
+                            <button className="shadow-xl duration-500 py-2 px-4 w-36 sm:w-48 order bg-green-700 text-white rounded hover:bg-green-800 active:bg-green-700 disabled:opacity-50 mt-4 flex items-center justify-center"
                                 onClick={() => handleSubmit()}
                             >
                                 Add to order
@@ -181,7 +182,7 @@ const Single = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {last && last.length > 0 ? (
                         last.map((item, index) => (
-                            <div key={index} className="w-full md:w-80 bg-white shadow rounded mt-2 mb-12 hover:shadow-2xl hover:duration-700"
+                            <div key={index} className="w-[43vh] md:w-80 bg-white shadow rounded mt-2 mb-12 hover:shadow-2xl hover:duration-700"
                                 data-aos="zoom-up"
                             >
                                 <div
@@ -198,7 +199,6 @@ const Single = () => {
                                     </div>
                                 </div>
                                 <div className="p-4 flex flex-col items-center ">
-                                    {/* <p onClick={() => { Navigate(`/details/${item.id}`) }} className="text-gray-400 font-light text-xs text-center">{item.category}</p> */}
                                     <h1 onClick={() => { Navigate(`/details/${item.id}`) }} className="text-gray-800 text-center mt-1 kalam">{item.name}</h1>
                                     <p onClick={() => { Navigate(`/details/${item.id}`) }} className="text-center text-gray-800 mt-1 kalam">{`${item.prix}`} MAD</p>
                                     <button id={id.item} value={id.item} className="py-2 px-4 bg-green-800 text-white rounded hover:bg-green-600 active:bg-green-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center"
@@ -221,14 +221,14 @@ const Single = () => {
                                             />
                                         </svg>
                                     </button>
-                                </div>
-                            </div>
+                                </div >
+                            </div >
                         ))
                     ) : (
                         <p>No products available.</p>
                     )}
-                </div>
-            </div>
+                </div >
+            </div >
 
             <div className="fixed bottom-10 left-10">
                 <div className="relative">

@@ -107,66 +107,63 @@ export default function Reservation() {
         <>
             <div className="bg-cover bg-center mt-[100px] bg-image">
                 <div className="grid justify-items-center relative top-24 ">
-                    <p className="  about font-bold  text-9xl sm:text-1xl ">Reservation </p>
+                    <p className="  about font-bold  text-6xl sm:text-8xl ">Reservation </p>
                 </div>
-                <img src={hero1} alt="" className='circle-image ml-11' data-aos="fade-left" />
-                <img src={hero2} alt="" className='circle-image ml-96 mt-10' data-aos="fade-left" />
-                <div className='flex justify-end mr-11' data-aos="fade-right">
-                    <img src={hero2} alt="" className='circle-image ' data-aos="fade-right" />
-                    <img src={hero3} alt="" className='circle-image ml-11' data-aos="fade-left" />
+                <img src={hero1} alt="" className='circle-image ml-11' data-aos="fade-up" />
+                <img src={hero2} alt="" className='circle-image ml- mt-10' data-aos="fade-up" />
+                <div className='flex justify-end mr-11' data-aos="fade-up">
+                    <img src={hero2} alt="" className='circle-image ' data-aos="fade-up" />
+                    <img src={hero3} alt="" className='circle-image ml-11' data-aos="fade-up" />
                 </div>
 
             </div>
+
+
             <div className="grid grid-cols-1 gap-4  h-10 w-2/3 mt-10  mr-auto ml-auto" style={{ background: "#D7FFE3" }} data-aos="fade-up">
                 <div className='flex justify-center mt-auto mb-auto'>
                     <p className="kalam">{time}</p>
                 </div>
-
             </div>
 
             <div className="container ">
-                <div className=" grid grid-cols-1 gap-4 w-full md:w-2/3 mt-10 ml-auto mr-auto bg-slate-50 rounded-sm shadow-xl p-6 xl:ml-[280px]">
-                    {/* Name and Email */}
+                <div className="grids grid grid-cols-1 gap-4 w-[410px] md:w-2/3 mt-10 ml-auto mr-auto bg-slate-50 rounded-sm shadow-xl p-6 xl:ml-[280px]">
                     <div className=' grid grid-cols-1 md:grid-cols-2 gap-4'>
-                        <div data-aos="fade-right">
+                        <div data-aos="fade-up">
                             <p className="kalam">{input_name.label}</p>
                             <input type="text" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600 " placeholder={input_name.placeHolder} style={{ background: "#EAEAEA" }} name="name" id="name" onChange={getValue} />
                         </div>
 
-                        <div data-aos="fade-left">
+                        <div data-aos="fade-up">
                             <p className="kalam">{input_email.label}</p>
                             <input type="email" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" placeholder={input_email.placeHolder} style={{ background: "#EAEAEA" }} name="email" id="email" onChange={getValue} />
                         </div>
                     </div>
 
-                    {/* Contact and Date */}
                     <div className='grid grid-cols-1 md:grid-cols-2 mt-4 gap-4'>
-                        <div data-aos="fade-right">
+                        <div data-aos="fade-up">
                             <p className="kalam" >{input_contact.label}</p>
                             <input type="tel" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" placeholder={input_contact.placeHolder} style={{ background: "#EAEAEA" }} name="phone" id="phone" onChange={getValue} />
                         </div>
 
-                        <div data-aos="fade-left">
+                        <div data-aos="fade-up">
                             <p className="kalam">{input_date.label}</p>
                             <input type="date" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" placeholder={input_date.placeHolder} style={{ background: "#EAEAEA" }} name="date" id="date" onChange={getValue} />
                         </div>
                     </div>
 
-                    {/* From and To */}
 
                     <div className='grid grid-cols-1 md:grid-cols-2 mt-4 gap-4'>
-                        <div data-aos="fade-right">
+                        <div data-aos="fade-up">
                             <p className="kalam">{input_form.label}</p>
                             <input type="time" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="from" id="from" onChange={getValue} />
                         </div>
 
-                        <div data-aos="fade-left">
+                        <div data-aos="fade-up">
                             <p className="kalam">{input_To.label}</p>
                             <input type="time" className="w-full  h-11 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="to" id="to" onChange={getValue} />
                         </div>
                     </div>
 
-                    {/* Guests */}
                     <div className='grid grid-cols-1 mt-3'>
                         <div data-aos="fade-up">
                             <p className="kalam">{input_guests.label}</p>
@@ -185,7 +182,6 @@ export default function Reservation() {
                         </div>
                     </div>
 
-                    {/* Info */}
                     <div className='grid grid-cols-1 mt-3'>
                         <div data-aos="fade-up">
                             <p className="kalam">{input_info.label}</p>
@@ -255,19 +251,10 @@ export default function Reservation() {
                 </div>
             )}
 
-            <img src={hero1} alt="" className='circle-image relative top-[-700px] left-[1500px]' />
+            <img src={hero1} alt="" className='circle-image relative top-[-700px] left-[100px]' />
             <img src={hero2} alt="" className='circle-image relative top-[-700px] left-12' />
             <img src={hero3} alt="" className='circle-image ml-11 relative top-[-340px]' />
-            <img src={hero2} alt="" className='circle-image relative top-[-300px] left-[1500px] ' />
-
-
-
-
-
-
-
-
-
+            <img src={hero2} alt="" className='circle-image relative top-[-300px] left-[100px] ' />
 
 
         </>

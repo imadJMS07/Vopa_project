@@ -7,7 +7,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const Panier = () => {
-    const url = 'https://api.chocolatpatis.shop';
+    const url = 'https://api.vopa.ma';
     const dispatch = useDispatch();
     const selectedPanier = useSelector((state) => state.paniers.Paniers);
     const count = selectedPanier.length;
@@ -20,6 +20,7 @@ const Panier = () => {
         lastName: '',
         address: '',
         city: '',
+        zone: 'null',
         phone: '',
         email: '',
 
@@ -34,6 +35,7 @@ const Panier = () => {
                     lastName: order.lastName,
                     address: order.address,
                     city: order.city,
+                    zone: order.zone,
                     phone: order.phone,
                     email: order.email,
                     PrixTotal: totalSum,
@@ -101,6 +103,34 @@ const Panier = () => {
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
+
+
+
+    const [uniqueCities, setUniqueCities] = useState([]);
+    const [zoneCity, setZoneCity] = useState([]);
+
+
+    useEffect(() => {
+        axios.get("http://127.0.0.1:8000/api/unique-cities")
+            .then(response => {
+                setUniqueCities(response.data.cities);
+                console.log(uniqueCities)
+            })
+            .catch(error => {
+                console.error('Error fetching unique cities:', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        axios.get(`http://127.0.0.1:8000/api/zones/${order.city}`)
+            .then(response => {
+                setZoneCity(response.data.zones);
+                console.log(zoneCity)
+            })
+            .catch(error => {
+                console.error('Error fetching zone city:', error);
+            });
+    }, [order.city]);
 
 
     return (
@@ -219,15 +249,60 @@ const Panier = () => {
                             </div>
 
 
-                            <div className=' grid grid-cols-1 md:grid-cols-2 gap-4'>
-                                <div>
+                            <div className=' grid grid-cols-1 md:grid-cols-3 gap-4'>
+
+                                {/* <div>
                                     <p className="kalam">City *</p>
                                     <input type='text' placeholder='City here' className="w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="city" id="city" onChange={getValue} />
+                                </div> */}
+
+                                <div className=''>
+                                    <p className="kalam">City *</p>
+                                    <select
+                                        className={`w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600 ${(!uniqueCities || uniqueCities.length === 0) ? 'disabled' : ''
+                                            }`}
+                                        style={{ background: "#EAEAEA" }}
+                                        name="city"
+                                        id="city"
+                                        onChange={getValue}
+                                        disabled={!uniqueCities || uniqueCities.length === 0}
+                                    >
+                                        <option value="" className='text-gray-200'>Select City</option>
+                                        {
+                                            uniqueCities.map((city, index) => (
+                                                <option value={city} key={index}>{city}</option>
+                                            ))
+                                        }
+                                    </select>
                                 </div>
+
+                                <div className=''>
+                                    <p className="kalam">Zone *</p>
+                                    <select
+                                        className={`w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600 ${(!zoneCity || zoneCity.length === 0) ? 'disabled' : ''
+                                            }`}
+                                        style={{ background: "#EAEAEA" }}
+                                        name="zone"
+                                        id="zone"
+                                        onChange={getValue}
+                                        disabled={!zoneCity || zoneCity.length === 0 || zoneCity === "null"}
+                                    >
+                                        <option value="" className='text-gray-200'>Select Zone</option>
+                                        {
+                                            zoneCity.map((zone, index) => (
+                                                <option value={zone} key={index}
+                                                    disabled={!zone || zone === "null"}
+                                                >{zone}</option>
+                                            ))
+                                        }
+                                    </select>
+                                </div>
+
                                 <div>
                                     <p className="kalam">Phone *</p>
                                     <input type='tel' placeholder='Phone here' className="w-full h-14 p-4 text-[17px] placeholder-gray-800 mt-3 rounded-md bg-slate-300 focus:outline-lime-600" style={{ background: "#EAEAEA" }} name="phone" id="phone" onChange={getValue} />
                                 </div>
+
                             </div>
 
 

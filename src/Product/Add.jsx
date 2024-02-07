@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 export default function Add() {
-    const url = 'https://api.chocolatpatis.shop';
+    const url = 'https://api.vopa.ma';
 
     const [cat, setCat] = useState([])
 
     useEffect(() => {
         // Fetch product data from the Laravel API
-        axios.get(`${url}/api/category`)
+        axios.get(`${url}/api/categories`)
             .then(response => {
                 setCat(response.data);
             })
@@ -45,7 +45,7 @@ export default function Add() {
         formData.append('image', product.image);
         formData.append('cal', product.cal);
         formData.append('description', product.desc);
-        formData.append('category_id', product.category_id);
+        formData.append('category_id', 1);
 
         try {
             await axios.post(`${url}/api/products`, formData);
@@ -76,7 +76,7 @@ export default function Add() {
         const formData = new FormData();
         formData.append('name', category.name);
         formData.append('image', category.image);
-        formData.append('description', 'category.image');
+        // formData.append('description', 'category.image');
 
         // formData.append('niveau_stock', "formik.values.niveau_stock");
         // formData.append('mouvment_stock', "formik.values.mouvment_stock");
@@ -88,16 +88,35 @@ export default function Add() {
         // formData.append('password', "mouadben2345678");
 
         try {
-            await axios.post(`${url}/api/category`, formData);
+            await axios.post(`${url}/api/categories`, formData);
             console.log('category added successfully!');
         } catch (error) {
             console.error('Error adding category:', error);
         }
     };
 
+    const [localIpAddress, setLocalIpAddress] = useState('');
+
+    const getLocalIpAddress = () => {
+        return new Promise((resolve, reject) => {
+            fetch('https://api64.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    setLocalIpAddress(data.ip);
+                    resolve(data.ip);
+                })
+                .catch(error => reject(error));
+        });
+    };
+
+    useEffect(() => {
 
 
-    return (
+        // Call the function to get local IP address when the component mounts
+        getLocalIpAddress();
+    }, []); // Empty dependency array ensures that this effect runs only once when the component mounts
+
+    return ( 
         <>
 
 
@@ -115,7 +134,6 @@ export default function Add() {
                     {category.name}
                     <label>Image:</label>
                     <input type="file" name="image" onChange={handleChangeCategory} /> <br />
-
 
                     <button type="submit">Add categorie</button>
                 </form>
@@ -144,6 +162,15 @@ export default function Add() {
 
             </div>
 
+
+            <button
+                type="button"
+                class="btn btn-outline-primary"
+                onClick={getLocalIpAddress}
+            >
+                Button
+            </button>
+            <p>Local IP Address: {localIpAddress}</p>
 
 
         </>
